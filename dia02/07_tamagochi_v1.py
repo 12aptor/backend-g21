@@ -34,7 +34,7 @@ def tamagochi():
     global energia
     global hambre
     global felicidad
-    nombre = input("Nombre a tu tamagochi: ")
+    nombre = input("Nombra a tu tamagochi: ")
 
     while True:
         accion = input("¿Que quieres hacer? (alimentar, jugar, dormir, estado): ")
