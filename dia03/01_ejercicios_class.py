@@ -46,7 +46,7 @@ class Usuario:
         self.id = id
         self.nombre = nombre
         self.correo = email
-        self.password = self.hashPassword(password)
+        self.password = self.__hashPassword(password)
 
     def mostrarUsuario(self):
         return {
@@ -55,8 +55,8 @@ class Usuario:
             "correo": self.correo,
             "password": self.password
         }
-    
-    def hashPassword(self, password):
+
+    def __hashPassword(self, password):
         pwd_bytes = password.encode()
         hash_pwd = hashlib.sha256(pwd_bytes).hexdigest()
         return hash_pwd
