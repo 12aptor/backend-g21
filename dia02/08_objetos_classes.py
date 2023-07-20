@@ -5,6 +5,8 @@ class Vehiculo:
     def __init__(self, elColor, laMarca):
         self.color = elColor
         self.marca = laMarca
+        self.modelo = "Mustang"
+        self.anio = 2023
     
     def __str__(self):
         return f"Vehiculo {self.color} de marca {self.marca}"
@@ -14,7 +16,7 @@ class Vehiculo:
     def obtenerColor(self):
         return self.color
 
-auto1 = Vehiculo("Rojo", "Mitsubishi")
+auto1 = Vehiculo("Rojo", "Ford")
 auto2 = Vehiculo("Verde", "Toyota")
 auto3 = Vehiculo("Azul", "Nissan")
 auto4 = Vehiculo("Negro", "Porshe")
