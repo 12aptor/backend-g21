@@ -60,3 +60,55 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# import time
+
+# class Tamagotchi:
+#     def __init__(self):
+#         self.name = ""
+#         self.hunger = 100
+#         self.happiness = 100
+#         self.health = 100
+
+#     def feed(self):
+#         self.hunger -= 20
+
+#     def play(self):
+#         self.happiness += 20
+
+#     def sleep(self):
+#         self.health += 20
+
+#     def tick(self):
+#         self.hunger -= 10
+#         self.happiness -= 5
+#         self.health -= 2
+
+#     def is_alive(self):
+#         return self.hunger > 0 and self.happiness > 0 and self.health > 0
+
+#     def __str__(self):
+#         return f"Name: {self.name}\nHunger: {self.hunger}\nHappiness: {self.happiness}\nHealth: {self.health}"
+
+# def main():
+#     tamagotchi = Tamagotchi()
+#     tamagotchi.name = input("What's your Tamagotchi's name? ")
+
+#     while tamagotchi.is_alive():
+#         print(tamagotchi)
+#         action = input("What do you want to do? (feed, play, sleep) ")
+#         if action == "feed":
+#             tamagotchi.feed()
+#         elif action == "play":
+#             tamagotchi.play()
+#         elif action == "sleep":
+#             tamagotchi.sleep()
+#         time.sleep(1)
+#         tamagotchi.tick()
+
+#     if not tamagotchi.is_alive():
+#         print(f"{tamagotchi.name} has died!")
+
+# if __name__ == "__main__":
+#     main()
