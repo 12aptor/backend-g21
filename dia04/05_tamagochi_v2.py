@@ -7,7 +7,7 @@ class Tamagochi:
 
     def alimentar(self):
         if self.hambre > 0:
-            self.hambre -= 1
+            self.hambre -= 2
 
     def dormir(self):
         if self.energia < 255:
