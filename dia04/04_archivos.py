@@ -12,12 +12,14 @@ archivo_txt.close()
 # a+: Añadido (agregar contenido) y lectura. Crea el archivo si éste no existe
 
 """Leer archivos"""
-txt = open("./dia04/prueba.txt", "r")
-print(txt.read())
+txt1 = open("./dia04/prueba.txt", "r")
+print(txt1.read())
+txt1.close()
 
 """Leer una cantidad de caracteres"""
-txt = open("./dia04/prueba.txt", "r")
-print(txt.read(5))
+txt2 = open("./dia04/prueba.txt", "r")
+print(txt2.read(5))
+txt2.close()
 
 """Crear un documento python dentro de la carpeta dia04"""
 py = open("./dia04/prueba.py", "w")
