@@ -17,10 +17,13 @@ class Usuario:
             "edad": self.edad,
             "dni": self.dni,
             "estado": True,
-            "creadoEl": str(datetime.datetime.now()),
+            "creadoEl": self.strFormatTime(datetime.datetime.now()),
             "password": self.password,
             "correo": self.correo
         }
+    
+    def strFormatTime(self, fecha):
+        return fecha.strftime("%d-%m-%Y")
 
     def __hashPwd(self, password):
         encodePwd = password.encode()
