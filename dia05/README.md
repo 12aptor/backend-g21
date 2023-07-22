@@ -36,3 +36,8 @@ pip freeze
 ```bash
 pip freeze > requirements.txt
 ```
+
+## Instalar librerias desde un archivo de requerimientos
+```bash
+pip install -r requirements.txt
+```
