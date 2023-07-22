@@ -26,3 +26,13 @@ deactivate
 ```bash
 pip install nombre_libreria
 ```
+
+## Para consultar las librerias instaladas
+```bash
+pip freeze
+```
+
+## Agregar librerias a un archivo de requerimientos
+```bash
+pip freeze > requirements.txt
+```
