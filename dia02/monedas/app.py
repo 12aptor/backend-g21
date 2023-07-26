@@ -19,6 +19,11 @@ def convertir():
         
     return render_template('index.html',titulo=TITULO_PAGINA,monto=resultado)
 
+"""
+implementar el convertidor de monedas de soles seleccionando
+de un combo select el tipo de moneda para que al dar clic en el boton convertir
+aparezca el monto en la moneda seleccionada
+"""
 
 app.run(debug=True)
 
