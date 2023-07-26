@@ -23,5 +23,3 @@ class TipoCambioSbs:
         
         return lista_monedas
     
-sbs = TipoCambioSbs()
-print(sbs.obtener())
