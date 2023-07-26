@@ -6,6 +6,7 @@ url = requests.get('https://www.sbs.gob.pe/app/pp/SISTIP_PORTAL/Paginas/Publicac
 if(url.status_code == 200):
     html = BeautifulSoup(url.text,'html.parser')
     tipo_cambio = html.find('tr',{'id':'ctl00_cphContent_rgTipoCambio_ctl00__0'})
+    print(tipo_cambio)
     compra = tipo_cambio.find('td',{'class':'APLI_fila2'})
     venta = tipo_cambio.find('td',{'class':'APLI_fila2'}).findNext('td')
     print("compra : " + compra.get_text())
