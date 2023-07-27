@@ -14,10 +14,19 @@ class TipoCambioSbs:
             moneda = fila.find('td',{'class':'APLI_fila3'})
             compra = fila.find('td',{'class':'APLI_fila2'})
             venta = fila.find('td',{'class':'APLI_fila2'}).findNext('td')
+            if(len(compra.get_text()) == 1):
+                valor_compra = venta.get_text()
+            else:
+                valor_compra = compra.get_text()
+                
+            if(len(venta.get_text()) == 1):
+                valor_venta = compra.get_text()
+            else:
+                valor_venta = venta.get_text()
             dic_moneda = {
                 'moneda':moneda.get_text(),
-                'compra':compra.get_text(),
-                'venta':venta.get_text()
+                'compra':valor_compra,
+                'venta':valor_venta
             }
             lista_monedas.append(dic_moneda)
         

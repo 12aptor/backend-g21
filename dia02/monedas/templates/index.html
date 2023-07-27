@@ -17,11 +17,20 @@
             <label for="moneda">Monto en Soles</label>
             <input type="text" name="soles" class="form-control"/>
         </div>
+        <div class="form-group">
+          <label for="monedadestino">Moneda a convertir</label>
+          <select class="form-control" name="tipomoneda">
+            {% for moneda in monedas %}
+              <option>{{moneda['moneda']}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Convertir</button>
     </form>
     {% if monto %}
         <div class="alert alert-success" role="alert">
-            <h1>El monto en dolares es : {{monto}}</h1>
+            <h1>El monto en {{moneda_destino}} es : {{monto}}</h1>
         </div>
     {% endif %}
     <table class="table">

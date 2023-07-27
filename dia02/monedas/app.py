@@ -4,20 +4,36 @@ from tipo_cambio_sbs import TipoCambioSbs
 app = Flask(__name__)
 TITULO_PAGINA = "TIPO DE CAMBIO DE LA SBS"
 
+sbs = TipoCambioSbs()
+lista_monedas = sbs.obtener()
 
 @app.route('/')
 def index():
-    sbs = TipoCambioSbs()
-    lista_monedas = sbs.obtener()
     return render_template('index.html',titulo=TITULO_PAGINA,monedas=lista_monedas)
 
 @app.route('/convertir',methods=['POST'])
 def convertir():
     if request.method == "POST":
         monto_soles = request.form['soles']
-        resultado =  round(float(monto_soles) / 3.588,2)
+        tipo_moneda = request.form['tipomoneda']
+        for contador in range(len(lista_monedas)):
+            dic_moneda = lista_monedas[contador]
+            for key,value in dic_moneda.items():
+                if key=='moneda' and value== tipo_moneda:
+                    index_moneda = contador
+                    break
+                
+        dic_monto_cambio = lista_monedas[index_moneda]
+        resultado =  round(float(monto_soles) / float(dic_monto_cambio['venta']),2)
         
-    return render_template('index.html',titulo=TITULO_PAGINA,monto=resultado)
+    context = {
+        'titulo':TITULO_PAGINA,
+        'monto':resultado,
+        'moneda_destino':tipo_moneda,
+        'monedas':lista_monedas
+    }
+        
+    return render_template('index.html',**context)
 
 """
 implementar el convertidor de monedas de soles seleccionando
