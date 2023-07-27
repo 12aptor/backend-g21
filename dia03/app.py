@@ -10,5 +10,13 @@ def index():
 def portafolio():
     return render_template('portafolio.html')
 
+@app.route('/acercade')
+def acercade():
+    return render_template('acercade.html')
+
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html')
+
 
 app.run(debug=True)
