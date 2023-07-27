@@ -1,10 +1,19 @@
 from flask import Flask,request,render_template
+from profile import Profile
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    perfil = Profile()
+    context = {
+        'nombre':perfil.name,
+        'imagen':perfil.image,
+        'rol':perfil.role,
+        'ubicacion':perfil.location,
+        'url_github':perfil.url_github
+    }
+    return render_template('index.html',**context)
 
 @app.route('/portafolio')
 def portafolio():
