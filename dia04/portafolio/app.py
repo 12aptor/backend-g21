@@ -29,7 +29,14 @@ def portafolio():
 
 @app.route('/acercade')
 def acercade():
-    return render_template('acercade.html')
+    perfil_fb = fb.get_collection('perfil')
+    perfil_det = perfil_fb[0]
+    context = {
+        'resumen':perfil_det['resumen'],
+        'experiencia':perfil_det['experiencia'],
+        'cv':perfil_det['cv']
+    }
+    return render_template('acercade.html',**context)
 
 @app.route('/contacto')
 def contacto():
