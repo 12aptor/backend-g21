@@ -73,3 +73,15 @@ where id = 6;
 
 -- mostrando datos que esten solo activos
 select * from tbl_experiencia where activo = 1;
+
+-- CREAMOS LA TABLA PARA ESTUDIOS
+
+CREATE TABLE db_personal.tbl_estudio (
+	id INT(11) auto_increment NOT NULL,
+	fecha_inicio DATE NOT NULL,
+	fecha_fin DATE NULL,
+	institucion varchar(255) NOT NULL,
+	titulo varchar(100) NOT NULL,
+	detalle TEXT NULL,
+	CONSTRAINT tbl_estudio_pk PRIMARY KEY (id)
+)
