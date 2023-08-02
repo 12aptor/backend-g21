@@ -55,6 +55,21 @@ update tbl_experiencia
 set actual = 1
 where fecha_fin is null;
 
+-- para eliminar un registro
+delete from tbl_experiencia
+where id = 3;
+
+-- agregamos un campo ara el borrado logico
+alter table tbl_experiencia
+add column activo tinyint(1) default 1;
+
 -- mostramos los datos de la tabla
 
 select * from tbl_experiencia;
+
+-- borrado logico
+update tbl_experiencia set activo = 0
+where id = 6;
+
+-- mostrando datos que esten solo activos
+select * from tbl_experiencia where activo = 1;
