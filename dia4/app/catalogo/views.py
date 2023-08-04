@@ -12,9 +12,10 @@ def index():
                        from tbl_producto
                     """
                     
+    
     cursor.execute(sql_productos)
     data = cursor.fetchall()
-    
+    print(data)
     context = {
         'productos':data
     }

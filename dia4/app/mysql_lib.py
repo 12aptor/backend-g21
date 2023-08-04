@@ -20,11 +20,3 @@ class MysqlDb:
             print("Error en la conexión a bd")
             
         return mysql_conn
-    
-# conn = MysqlDb('localhost','root','','db_factura_g21')
-# db = conn.get_conn()
-# cursor = db.cursor()
-# cursor.execute('select * from tbl_producto')
-# data = cursor.fetchall()
-# print(data)
-# cursor.close()
