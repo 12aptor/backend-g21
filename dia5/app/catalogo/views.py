@@ -11,8 +11,6 @@ def index():
                        producto_precio as precio
                        from tbl_producto
                     """
-                    
-    
     cursor.execute(sql_productos)
     data = cursor.fetchall()
     print(data)
@@ -21,3 +19,16 @@ def index():
     }
                     
     return render_template('catalogo/index.html',**context)
+
+from .forms import CatalogoForm
+
+@catalogo.route('/nuevo')
+def nuevo():
+    catalogo_form = CatalogoForm()
+    
+    context = {
+        'form':catalogo_form
+    }
+    
+    return render_template('catalogo/nuevo.html',**context)
+    
