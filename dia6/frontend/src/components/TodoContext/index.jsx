@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { useLocalStorage } from './useLocalStorage';
 
 const TodoContext = React.createContext();
@@ -28,11 +29,23 @@ function TodoProvider({ children }) {
 
   const addTodo = (text) => {
     const newTodos = [...todos];
-    newTodos.push({
+
+    const newData = {
+      text:text,
+      completed:false
+    }
+
+    axios.post('http://localhost:5000/tarea',newData)
+    .then(res=>{
+      console.log(res.data)
+    })
+
+
+    /*newTodos.push({
       text,
       completed: false,
     });
-    saveTodos(newTodos);
+    saveTodos(newTodos);*/
   };
 
   const completeTodo = (text) => {
