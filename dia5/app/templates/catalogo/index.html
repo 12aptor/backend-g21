@@ -19,7 +19,12 @@
                       <th scope="row">{{producto.id}}</th>
                       <td>{{producto.descripcion}}</td>
                       <td>{{producto.precio}}</td>
-                      <td></td>
+                      <td>
+                        <a href="/catalogo/editar/{{producto.id}}"
+                        class="btn btn-success">
+                          Editar
+                        </a>
+                      </td>
                     </tr>
                   {% endfor %}
                   

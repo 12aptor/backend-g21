@@ -3,6 +3,6 @@ from wtforms.validators import DataRequired
 from wtforms.fields import StringField,DecimalField,SubmitField
 
 class CatalogoForm(FlaskForm):
-    descripcion = StringField('Descripcion',validators=[DataRequired()])
+    descripcion = StringField('Descripción de Producto',validators=[DataRequired()])
     precio = DecimalField('Precio',places=2,validators=[DataRequired()])
-    submit = SubmitField('Registrar Nuevo Producto')
+    submit = SubmitField('Guardar')
