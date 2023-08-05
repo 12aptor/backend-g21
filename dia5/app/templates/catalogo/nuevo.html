@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+{%block content %}
+    <h1 class="mt-4">NUEVO PRODUCTO</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            {{render_form(form)}}
+        </div>
+    </div>
+{% endblock %}
