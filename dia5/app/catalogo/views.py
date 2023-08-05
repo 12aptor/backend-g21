@@ -88,4 +88,16 @@ def editar(id):
     }
     
     return render_template('catalogo/editar.html',**context)
+
+@catalogo.route('/eliminar/<id>',methods=['GET'])
+def eliminar(id):
+    cursor = db.cursor()
+    sql_eliminar = """
+                 delete from tbl_producto 
+                 where producto_id = """+ id +"""
+                 """
+    cursor.execute(sql_eliminar)
+    db.commit()
+    cursor.close()
+    return redirect('/catalogo')
     
