@@ -20,5 +20,14 @@ def index():
     }
     return jsonify(context)
 
+@app.route('/tarea')
+def get_tarea():
+    cursor = mysql.connection.cursor()
+    cursor.execute("select text,completed from tbl_tarea")
+    data = cursor.fetchall()
+    cursor.close()
+    
+    return jsonify(data)
+
 if __name__ == '__main__':
     app.run(debug=True)
