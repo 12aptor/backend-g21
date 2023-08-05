@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 function useLocalStorage(itemName, initialValue) {
   const [item, setItem] = React.useState(initialValue);
@@ -8,17 +9,24 @@ function useLocalStorage(itemName, initialValue) {
   React.useEffect(() => {
     setTimeout(() => {
       try {
-        const localStorageItem = localStorage.getItem(itemName);
+        //const localStorageItem = localStorage.getItem(itemName);
     
         let parsedItem;
+
+        axios.get('http://localhost:5000/tarea')
+        .then(res=>{
+          console.log(res.data)
+          parsedItem = res.data
+          setItem(parsedItem);
+        })
   
-        if (!localStorageItem) {
+        /*if (!localStorageItem) {
           localStorage.setItem(itemName, JSON.stringify(initialValue));
           parsedItem = initialValue;
         } else {
           parsedItem = JSON.parse(localStorageItem);
           setItem(parsedItem);
-        }
+        }*/
   
         setLoading(false);
       } catch(error) {
