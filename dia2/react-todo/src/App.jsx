@@ -19,6 +19,9 @@ class App extends React.Component{
     axios.get('http://localhost:5000/tarea')
     .then(res=>{
       console.log(res.data)
+      this.setState({
+        tareas : res.data.content
+      })
     })
   }
 
@@ -36,11 +39,16 @@ class App extends React.Component{
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Tarea uno</td>
-                <td>Pendiente</td>
-              </tr>
+              {this.state.tareas.map(tarea=>{
+                return(
+                  <tr key={tarea.id}>
+                    <td>{tarea.id}</td>
+                    <td>{tarea.descripcion}</td>
+                    <td>{tarea.estado}</td>
+                  </tr>
+                )
+              })}
+              
             </tbody>
           </Table>
         </Container>
