@@ -86,7 +86,9 @@ class App extends React.Component{
         var temp = this.state.tareas
         this.setState({
           tareas :temp,
-          descripcion:''
+          descripcion:'',
+          id:0,
+          pos:null
         })
       })
     }
