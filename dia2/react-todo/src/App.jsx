@@ -15,6 +15,7 @@ class App extends React.Component{
       }
     )
     this.cambioDescripcion = this.cambioDescripcion.bind(this)
+    this.guardar = this.guardar.bind(this)
   }
 
   componentDidMount(){
@@ -29,7 +30,6 @@ class App extends React.Component{
   }
 
   cambioDescripcion(e){
-    console.log(e.target.value)
     this.setState({
       descripcion : e.target.value
     })
@@ -37,9 +37,21 @@ class App extends React.Component{
 
   guardar(e){
     e.preventDefault()
-    let data_descripcion = this.state.descripcion
-    console.log("enviando nueva tarea...")
-    console.log("descripcion : " + data_descripcion)
+    const data = {
+      descripcion : this.state.descripcion,
+      estado : this.state.estado
+    }
+    console.log(data)
+    axios.post('http://localhost:5000/tarea',data)
+    .then(res=>{
+      console.log(res.data.content)
+      this.state.tareas.push(res.data.content)
+      var temp = this.state.tareas
+      this.setState({
+        tareas :temp,
+        descripcion:''
+      })
+    })
   }
 
   render(){
