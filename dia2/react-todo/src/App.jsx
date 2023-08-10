@@ -21,7 +21,6 @@ class App extends React.Component{
     this.mostrar = this.mostrar.bind(this)
     this.eliminar = this.eliminar.bind(this)
     this.cambiarEstado = this.cambiarEstado.bind(this)
-    this.checkEstado = this.checkEstado.bind(this)
   }
 
   componentDidMount(){
@@ -119,14 +118,6 @@ class App extends React.Component{
     })
   }
 
-  checkEstado(estado){
-    if(estado == 'completado'){
-      return 'checked'
-    }
-    else
-      return ''
-  }
-
   render(){
     return(
       <div>
@@ -159,8 +150,12 @@ class App extends React.Component{
                     <td>{tarea.descripcion}</td>
                     <td>
                         <div className="form-check form-switch">
-                          <input className="form-check-input" type="checkbox" 
-                          ></input>
+                          {tarea.estado == 'completado'
+                            ?
+                            <input className="form-check-input" type="checkbox" checked></input>
+                            :
+                            <input className="form-check-input" type="checkbox"></input>
+                          }
                         </div>
                     </td>
                     <td>
