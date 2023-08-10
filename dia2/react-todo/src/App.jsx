@@ -13,13 +13,15 @@ class App extends React.Component{
         descripcion:'',
         estado:'pendiente',
         id:0,
-        pos:null,
+        pos:null
       }
     )
     this.cambioDescripcion = this.cambioDescripcion.bind(this)
     this.guardar = this.guardar.bind(this)
     this.mostrar = this.mostrar.bind(this)
     this.eliminar = this.eliminar.bind(this)
+    this.cambiarEstado = this.cambiarEstado.bind(this)
+    this.checkEstado = this.checkEstado.bind(this)
   }
 
   componentDidMount(){
@@ -103,6 +105,28 @@ class App extends React.Component{
     })
   }
 
+  cambiarEstado(cod,pos){
+    const data = {
+      estado : 'completado'
+    }
+    axios.patch('http://localhost:5000/tarea/'+cod,data)
+    .then(res=>{
+      var temp = this.state.tareas
+      temp[pos] = res.data.content
+      this.setState({
+        tareas:temp
+      })
+    })
+  }
+
+  checkEstado(estado){
+    if(estado == 'completado'){
+      return 'checked'
+    }
+    else
+      return ''
+  }
+
   render(){
     return(
       <div>
@@ -133,12 +157,19 @@ class App extends React.Component{
                   <tr key={tarea.id}>
                     <td>{tarea.id}</td>
                     <td>{tarea.descripcion}</td>
-                    <td>{tarea.estado}</td>
+                    <td>
+                        <div className="form-check form-switch">
+                          <input className="form-check-input" type="checkbox" 
+                          ></input>
+                        </div>
+                    </td>
                     <td>
                       <Button variant="success" onClick={()=>this.mostrar(tarea.id,index)}>
                         Editar
                       </Button>
-                       
+                      <Button variant="warning" onClick={()=>this.cambiarEstado(tarea.id,index)}>
+                        Completar
+                      </Button>
                       <Button variant="danger" onClick={()=>this.eliminar(tarea.id)}>
                         Eliminar
                       </Button>
