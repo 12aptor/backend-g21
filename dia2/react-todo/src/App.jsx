@@ -9,9 +9,12 @@ class App extends React.Component{
     super(props)
     this.state = (
       {
-        tareas : []
+        tareas : [],
+        descripcion:'',
+        estado:'pendiente'
       }
     )
+    this.cambioDescripcion = this.cambioDescripcion.bind(this)
   }
 
   componentDidMount(){
@@ -25,11 +28,35 @@ class App extends React.Component{
     })
   }
 
+  cambioDescripcion(e){
+    console.log(e.target.value)
+    this.setState({
+      descripcion : e.target.value
+    })
+  }
+
+  guardar(e){
+    e.preventDefault()
+    let data_descripcion = this.state.descripcion
+    console.log("enviando nueva tarea...")
+    console.log("descripcion : " + data_descripcion)
+  }
+
   render(){
     return(
       <div>
         <Container>
           <h1>Lista de Tareas</h1>
+          <Form onSubmit={this.guardar}>
+            <Form.Group className="mb-3">
+              <Form.Control type="text" value={this.state.descripcion}
+              onChange={this.cambioDescripcion}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Guardar
+            </Button>
+          </Form>
           <Table striped bordered hover variant="dark">
             <thead>
               <tr>
