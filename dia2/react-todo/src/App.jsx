@@ -19,6 +19,7 @@ class App extends React.Component{
     this.cambioDescripcion = this.cambioDescripcion.bind(this)
     this.guardar = this.guardar.bind(this)
     this.mostrar = this.mostrar.bind(this)
+    this.eliminar = this.eliminar.bind(this)
   }
 
   componentDidMount(){
@@ -64,8 +65,9 @@ class App extends React.Component{
       axios.put('http://localhost:5000/tarea/'+cod,data)
       .then(res=>{
         let index_tarea = this.state.pos
-        this.state.tareas[index_tarea] = res.data.content
+        //this.state.tareas[index_tarea] = res.data.content
         var temp = this.state.tareas
+        temp[index_tarea] = res.data.content
         this.setState({
           tareas : temp,
           descripcion:'',
@@ -88,6 +90,17 @@ class App extends React.Component{
       })
     }
     
+  }
+
+  eliminar(cod){
+    axios.delete('http://localhost:5000/tarea/'+cod)
+    .then(res=>{
+      console.log(res.data.content)
+      var temp = this.state.tareas.filter((tarea)=>tarea.id !== res.data.content.id)
+      this.setState({
+        tareas:temp
+      })
+    })
   }
 
   render(){
@@ -124,6 +137,10 @@ class App extends React.Component{
                     <td>
                       <Button variant="success" onClick={()=>this.mostrar(tarea.id,index)}>
                         Editar
+                      </Button>
+                       
+                      <Button variant="danger" onClick={()=>this.eliminar(tarea.id)}>
+                        Eliminar
                       </Button>
                     </td>
                   </tr>
