@@ -100,6 +100,22 @@ def update_tarea(id):
     
     return jsonify(context)
 
+@app.route('/tarea/<id>',methods=['PATCH'])
+def update_tarea_status(id):
+    estado = request.json['estado']
+    update_tarea = Tarea.query.get(id)
+    update_tarea.estado = estado
+    db.session.commit()
+    
+    data_schema = TareaSchema()
+    
+    context = {
+        'status':True,
+        'content':data_schema.dump(update_tarea)
+    }
+    
+    return jsonify(context)
+
 @app.route('/tarea/<id>',methods=['DELETE'])
 def delete_tarea(id):
     del_tarea = Tarea.query.get(id)
