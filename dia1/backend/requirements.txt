@@ -11,3 +11,4 @@ flask-restful
 #librerias
 mysqlclient
 marshmallow-sqlalchemy
+python-dotenv
