@@ -1,6 +1,6 @@
 from utils.db import ma
 
-from marshamllow_sqlalchemy import SQLAlchemyAutoSchema 
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema 
 
 from .models import Plato
 
