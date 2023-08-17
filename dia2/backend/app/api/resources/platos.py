@@ -20,6 +20,23 @@ class PlatoResource(Resource):
         return context
     
     def post(self):
-        pass
+        data = request.get_json()
+        obj_plato = Plato(data['nombre'])
+        if 'precio' in data:
+            obj_plato.precio = data['precio']
+        if 'imagen' in data:
+            obj_plato.imagen = data['imagen']
+        obj_plato.save()
+        if 'categoria_id' in data:
+            obj_plato.categoria_id = data['categoria_id']
+        
+        data_schema = PlatoSchema()
+        
+        context = {
+            'status':True,
+            'content':data_schema.dump(obj_plato)
+        }
+        
+        return context
     
 api_platos.add_resource(PlatoResource,'/plato')
