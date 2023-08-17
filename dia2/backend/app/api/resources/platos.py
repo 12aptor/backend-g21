@@ -39,4 +39,28 @@ class PlatoResource(Resource):
         
         return context
     
+class PlatoDetailResource(Resource):
+    
+    def get(self,id):
+        data = Plato.get_by_id(id)
+        if not data:
+            return{
+                'status':False,
+                'content':'plato no encontrado'
+            },404
+            
+        data_schema = PlatoSchema()
+        context = {
+            'status':True,
+            'content':data_schema.dump(data)
+        }
+        return context
+    
+    def put(self,id):
+        pass
+    
+    def delete(self,id):
+        pass
+    
 api_platos.add_resource(PlatoResource,'/plato')
+api_platos.add_resource(PlatoDetailResource,'/plato/<id>',endpoint='plato')
