@@ -18,7 +18,6 @@ class Categoria(db.Model):
         db.session.add(self)
         db.session.commit()
         
-
 class Plato(db.Model):
     __tablename__ = "tbl_plato"
     
