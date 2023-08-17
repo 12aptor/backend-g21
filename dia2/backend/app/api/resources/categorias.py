@@ -10,7 +10,15 @@ api_categorias = Api(api)
 class CategoriaResource(Resource):
     
     def get(self):
-        pass
+        data = Categoria.get_all()
+        data_schema = CategoriaSchema(many=True)
+        
+        context = {
+            'status':True,
+            'content':data_schema.dump(data)
+        }
+        
+        return context
     
     def post(self):
         data = request.get_json()
