@@ -23,6 +23,10 @@ class Categoria(db.Model):
     def get_by_id(id):
         return Categoria.query.get(id)
     
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+    
         
 class Plato(db.Model):
     __tablename__ = "tbl_plato"

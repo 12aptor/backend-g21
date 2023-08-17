@@ -65,7 +65,16 @@ class CategoriaDetailResource(Resource):
         return context
     
     def delete(self,id):
-        pass
+        obj_categoria = Categoria.get_by_id(id)
+        obj_categoria.delete()
+        data_schema = CategoriaSchema()
+        
+        context = {
+            'status':True,
+            'content':data_schema.dump(obj_categoria)
+        }
+        
+        return context
     
 api_categorias.add_resource(CategoriaResource,'/categoria')
 api_categorias.add_resource(CategoriaDetailResource,'/categoria/<id>',endpoint='categoria')
