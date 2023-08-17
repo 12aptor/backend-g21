@@ -57,7 +57,31 @@ class PlatoDetailResource(Resource):
         return context
     
     def put(self,id):
-        pass
+        obj_plato = Plato.get_by_id(id)
+        if not obj_plato:
+            return{
+                'status':False,
+                'content':'plato no encontrado'
+            },404
+        
+        data = request.get_json()    
+        if 'nombre' in data:
+            obj_plato.nombre = data['nombre']
+        if 'precio' in data:
+            obj_plato.precio = data['precio']
+        if 'imagen' in data:
+            obj_plato.imagen = data['imagen']
+        if 'categoria_id' in data:
+            obj_plato.categoria_id = data['categoria_id']
+        
+        obj_plato.save()
+        
+        data_schema = PlatoSchema()
+        context = {
+            'status':True,
+            'content':data_schema.dump(obj_plato)
+        }
+        return context
     
     def delete(self,id):
         pass

@@ -1,4 +1,5 @@
 from utils.db import db
+from sqlalchemy.orm import relationship
 
 class Categoria(db.Model):
     __tablename__ = "tbl_categoria"
@@ -37,6 +38,7 @@ class Plato(db.Model):
     imagen = db.Column(db.String(254),
                        default='https://img.freepik.com/vector-premium/icono-parrilla-pollo-negro-simbolo-ilustracion-pollo-caliente-signo-vector-alimentos_744955-457.jpg')
     categoria_id = db.Column(db.Integer,db.ForeignKey('tbl_categoria.id'),nullable=True)
+    categoria = relationship("Categoria", backref="platos")
     
     
     def __init__(self,nombre):
