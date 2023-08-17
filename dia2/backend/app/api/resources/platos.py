@@ -84,7 +84,24 @@ class PlatoDetailResource(Resource):
         return context
     
     def delete(self,id):
-        pass
+        try:
+            obj_plato = Plato.get_by_id(id)
+            obj_plato.delete()
+            
+            data_schema = PlatoSchema()
+            
+            context = {
+                'status':True,
+                'content':data_schema.dump(obj_plato)
+            }
+            
+            return context
+            
+        except Exception as e:
+            return {
+                'status':False,
+                'content': str(e)
+            },500
     
 api_platos.add_resource(PlatoResource,'/plato')
 api_platos.add_resource(PlatoDetailResource,'/plato/<id>',endpoint='plato')
