@@ -36,8 +36,26 @@ class Plato(db.Model):
     precio = db.Column(db.Double,default=0)
     imagen = db.Column(db.String(254),
                        default='https://img.freepik.com/vector-premium/icono-parrilla-pollo-negro-simbolo-ilustracion-pollo-caliente-signo-vector-alimentos_744955-457.jpg')
+    categoria_id = db.Column(db.Integer,db.ForeignKey('tbl_categoria.id'),nullable=True)
+    
     
     def __init__(self,nombre):
         self.nombre = nombre
         
+    @staticmethod
+    def get_all():
+        return Plato.query.all()
+    
+    @staticmethod
+    def get_by_id(id):
+        return Plato.query.get(id)
+    
+    def save(self):
+        if not self.id:
+            db.session.add(self)
+        db.session.commit()
+        
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
     
