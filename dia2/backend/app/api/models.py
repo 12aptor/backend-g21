@@ -15,8 +15,14 @@ class Categoria(db.Model):
         return Categoria.query.all()
     
     def save(self):
-        db.session.add(self)
+        if not self.id:
+            db.session.add(self)
         db.session.commit()
+        
+    @staticmethod
+    def get_by_id(id):
+        return Categoria.query.get(id)
+    
         
 class Plato(db.Model):
     __tablename__ = "tbl_plato"

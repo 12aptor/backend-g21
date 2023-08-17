@@ -35,4 +35,23 @@ class CategoriaResource(Resource):
         
         return context
     
+class CategoriaDetailResource(Resource):
+    
+    def get(self,id):
+        data = Categoria.get_by_id(id)
+        data_schema = CategoriaSchema()
+        context = {
+            'status':True,
+            'content':data_schema.dump(data)
+        }
+        
+        return context
+    
+    def put(self,id):
+        pass
+    
+    def delete(self,id):
+        pass
+    
 api_categorias.add_resource(CategoriaResource,'/categoria')
+api_categorias.add_resource(CategoriaDetailResource,'/categoria/<id>',endpoint='categoria')
