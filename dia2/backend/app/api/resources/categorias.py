@@ -48,7 +48,21 @@ class CategoriaDetailResource(Resource):
         return context
     
     def put(self,id):
-        pass
+        data = request.get_json()
+        obj_categoria = Categoria.get_by_id(id)
+        obj_categoria.nombre = data['nombre']
+        if 'imagen' in data:
+            obj_categoria.imagen = data['imagen']
+        obj_categoria.save()
+        
+        data_schema = CategoriaSchema()
+        
+        context = {
+            'status':True,
+            'content':data_schema.dump(obj_categoria)
+        }
+        
+        return context
     
     def delete(self,id):
         pass
