@@ -15,3 +15,13 @@ from flask_jwt_extended import (
 )
 
 api_usuarios = Api(api)
+
+class UsuarioResource(Resource):
+    
+    def get(self):
+        pass
+    
+    def post(self):
+        pass
+    
+api_usuarios.add_resource(UsuarioResource,'/usuario')
