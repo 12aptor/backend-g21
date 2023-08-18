@@ -6,3 +6,4 @@ from .models import Plato
 
 from .resources import platos
 from .resources import categorias
+from .resources import usuarios

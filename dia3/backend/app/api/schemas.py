@@ -1,8 +1,5 @@
 from utils.db import ma
-
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema,fields
-
-from utils.db import ma
 from .models import Plato,Categoria
 
 class CategoriaSchema(SQLAlchemyAutoSchema):
