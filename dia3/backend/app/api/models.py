@@ -76,7 +76,7 @@ class Usuario(db.Model):
     
     @staticmethod
     def get_by_id(id):
-        return User.query.get(id)
+        return Usuario.query.get(id)
     
     def save(self):
         if not self.id:
