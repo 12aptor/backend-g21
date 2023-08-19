@@ -1,11 +1,41 @@
-from flask_restful import Resource,Api
+import os
+import werkzeug
+
+from flask_restful import Resource,Api,reqparse
 from flask import request
 
 from .. import api
 from ..models import Plato
 from ..schemas import PlatoSchema
 
+
 api_platos = Api(api)
+
+class UploadImage(Resource):
+    
+    def post(self):
+        try:
+            parse = reqparse.RequestParser()
+            parse.add_argument('file',type=werkzeug.datastructures.FileStorage,location='files')
+            args = parse.parse_args()
+            
+            image_file = args['file']
+            image_file.save(os.path.join(os.getcwd(),'app','static','uploads',image_file.filename))
+            
+            url_path = request.host_url + 'static/uploads/' + str(image_file.filename)
+            
+            context = {
+                'status':True,
+                'content':url_path
+            }
+            
+            return context,201
+        
+        except Exception as e:
+            return {
+                'status':False,
+                'content':str(e)
+            },500
 
 class PlatoResource(Resource):
     
@@ -105,3 +135,4 @@ class PlatoDetailResource(Resource):
     
 api_platos.add_resource(PlatoResource,'/plato')
 api_platos.add_resource(PlatoDetailResource,'/plato/<id>',endpoint='plato')
+api_platos.add_resource(UploadImage,'/plato/upload')
