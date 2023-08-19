@@ -5,10 +5,15 @@ from .. import api
 from ..models import Categoria
 from ..schemas import CategoriaSchema
 
+from flask_jwt_extended import (
+    jwt_required
+)
+
 api_categorias = Api(api)
 
 class CategoriaResource(Resource):
     
+    @jwt_required()
     def get(self):
         data = Categoria.get_all()
         data_schema = CategoriaSchema(many=True)
@@ -20,6 +25,7 @@ class CategoriaResource(Resource):
         
         return context
     
+    @jwt_required()
     def post(self):
         data = request.get_json()
         
