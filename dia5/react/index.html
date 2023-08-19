@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TaipApp</title>
+    <!--fivicon icon-->
+    <link rel="icon" href="assets/img/fevicon.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Bebas+Neue&family=Satisfy&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body class='sc5'>
+    <!-- search popup area start -->
+    <div class="body-overlay" id="body-overlay"></div>
+    <div class="td-search-popup" id="td-search-popup">
+        <form action="index.html" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <!-- //. search Popup -->
+    <!-- navbar start -->
+    <header class="navbar-area">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container nav-container">
+                <div class="responsive-mobile-menu">
+                    <button class="menu toggle-btn d-block d-lg-none" data-target="#themefie_main_menu" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-left"></span>
+                        <span class="icon-right"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="themefie_main_menu">
+                    <ul class="navbar-nav menu-open">
+                        <li>
+                            <a href="about.html">ABOUT US</a>
+                        </li>
+                        <li>
+                            <a href="contact.html">CONTACTS</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo">
+                    <a class="main-logo" href="home-1.html">
+                        <img src="assets/img/logo.png" alt="img">
+                    </a>
+                </div>
+                <div class="nav-right-part nav-right-part-mobile">
+                    <ul>
+                        <li><a class="search" href="#"><i class="ri-search-line"></i></a>
+                        </li>
+                        <li class="phone-contact d-md-block d-none"><i class="ri-phone-fill float-start"></i>
+                            +997 509 153 849
+                        </li>
+                        <li class="menu-cart"><a href="cart.html">CART <span>1</span></a></li>
+                        <li>49.50 $</li>
+                    </ul>
+                </div>
+                <div class="nav-right-part nav-right-part-desktop">                    
+                    <ul>
+                        <li><a class="search" href="#"><i class="ri-search-line"></i></a>
+                        </li>
+                        <li class="phone-contact"><i class="ri-phone-fill float-start"></i>
+                            +997 509 153 849
+                        </li>
+                        <li class="menu-cart"><a href="cart.html">CART <span>1</span></a></li>
+                        <li>49.50 $</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- navbar end -->
+    <!-- populer Area Start-->
+    <section class="populer-area pd-top-50 pd-bottom-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-8">
+
+                </div>
+            </div>
+            <div class="row justify-content-center" id="productos">
+                
+            </div>
+        </div>
+    </section>
+    <!-- footer area start -->
+    <footer class="footer-area pd-top-100">
+        <div class="footer-inner padding-top-100 padding-bottom-65">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-widget widget">
+                            <div class="logo">
+                                <img src="assets/img/logo.png" alt="img">
+                            </div>
+                            <ul class="contact_info_list">
+                                <li class="single-info-item">
+                                    <img src="assets/img/icon/location.png" alt="icon">
+                                    <div class="details">
+                                        4920 Trails End Road Ft  United States, FL 33311
+                                    </div>
+                                </li>
+                                <li class="single-info-item">
+                                    <img src="assets/img/icon/envelope.png" alt="icon">
+                                    <div class="details">
+                                        ordernow@foodka.com
+                                    </div>
+                                </li>
+                                <li class="single-info-item">
+                                    <img src="assets/img/icon/phone.png" alt="icon">
+                                    <div class="details">
+                                        +997 509 153 849
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-widget widget widget_link">
+                            <h4 class="widget-title">Opening Hours</h4>
+                            <ul>
+                                <li>Monday : 09.00am-10.00pm</li>
+                                <li>Tuesday : 09.00am-10.00pm</li>
+                                <li>Wednesday : 09.00am-10.00pm</li>
+                                <li>Thursday : 09.00am-10.00pm</li>
+                                <li>Friday  : 09.00am-10.00pm</li>
+                                <li>Saturday & Sunday : <span>Closed</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end --> 
+    <script type="text/babel">
+        function App(){
+            const arrayProductos = [
+                {
+                    'nombre':'POLLO A LA BRASA',
+                    'imagen':'https://img1.freepng.es/20180601/wjk/kisspng-pollo-a-la-brasa-roast-chicken-peruvian-cuisine-fr-5b1191771c65a7.0442864615278780071163.jpg',
+                    'precio':'100'
+                },
+                {
+                    'nombre':'PIZZA AMERICANA',
+                    'imagen':'https://realplaza.vtexassets.com/arquivos/ids/20631630/image-18518f11bed241b59b5cbacd02a5051f.jpg',
+                    'precio':'150'
+                }
+            ]
+            return(arrayProductos.map((prod)=>{
+                return(
+                    <div className="col-lg-6">
+                        <div className="single-item-wrap style-2">
+                            <div className="media">
+                                <div className="thumb">
+                                    <img src={prod.imagen} alt="img"/>
+                                </div>
+                                <div className="wrap-details">
+                                    <h5><a href="single-product.html">{prod.nombre}</a></h5>
+                                    <div className="wrap-footer">
+                                        <h6 className="price">{prod.precio}</h6>
+                                        <button type="submit" className="btn btn-secondary">ADD TO CART</button>
+                                    </div>                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }))
+        }
+
+        const container = document.getElementById('productos')
+        const root = ReactDOM.createRoot(container)
+        root.render(<App/>);
+    </script>
+</body>
+</html>
