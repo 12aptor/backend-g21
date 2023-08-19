@@ -2,24 +2,25 @@ import React from 'react'
 import SearchPopup from '../components/SearchPopup'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import PlatoService from '../services/Plato.service'
 
 class Home extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            platos : [
-                {
-                    'nombre':'POLLO A LA BRASA',
-                    'imagen':'https://img1.freepng.es/20180601/wjk/kisspng-pollo-a-la-brasa-roast-chicken-peruvian-cuisine-fr-5b1191771c65a7.0442864615278780071163.jpg',
-                    'precio':'100'
-                },
-                {
-                    'nombre':'PIZZA AMERICANA',
-                    'imagen':'https://realplaza.vtexassets.com/arquivos/ids/20631630/image-18518f11bed241b59b5cbacd02a5051f.jpg',
-                    'precio':'150'
-                }
-            ]
+            platos : []
         }
+    }
+
+    componentDidMount(){
+        PlatoService.getAll().then(
+            (res)=>{
+                console.log(res)
+                this.setState({
+                    platos:res
+                })
+            }
+        )
     }
     render(){
         return(
