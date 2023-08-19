@@ -20,7 +20,20 @@ api_usuarios = Api(api)
 class UsuarioResource(Resource):
     
     def get(self):
-        pass
+        try:
+            data = Usuario.get_all()
+            data_schema = UsuarioSchema(many=True)
+            
+            context = {
+                'status':True,
+                'content':data_schema.dump(data)
+            },200
+            return context
+        except Exception as e:
+            return {
+                'status':False,
+                'content':str(e)
+            },500
     
     def post(self):
         try:
