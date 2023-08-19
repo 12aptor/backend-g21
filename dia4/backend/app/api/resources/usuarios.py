@@ -12,14 +12,33 @@ from werkzeug.security import (
 
 from flask_jwt_extended import (
     create_access_token,
-    jwt_required
+    jwt_required,
+    verify_jwt_in_request,
+    get_jwt
 )
 
 api_usuarios = Api(api)
 
+def jwt_is_admin():
+    def validador(fn):
+        def decorador(*args,**kwargs):
+            verify_jwt_in_request()
+            jwt_content = get_jwt()
+            if jwt_content['sub']['isAdmin']:
+                return fn(*args,**kwargs)
+            else:
+                return {
+                    'status': False,
+                    'content':'No tiene permisos de Administrador'
+                },403
+        
+        return decorador
+    return validador
+
 class UsuarioResource(Resource):
     
     @jwt_required()
+    @jwt_is_admin()
     def get(self):
         try:
             data = Usuario.get_all()
