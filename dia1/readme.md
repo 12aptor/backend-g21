@@ -6,3 +6,5 @@
 6 - python manage.py runserver
 7 - python manage.py startapp app
 8 - python manage.py inspectdb
+9 - python manage.py migrate
+10 - python manage.py createsuperuser

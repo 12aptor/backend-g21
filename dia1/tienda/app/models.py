@@ -8,6 +8,9 @@ class Categoria(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_categoria'
+        
+    def __str__(self):
+        return self.nombre
 
 
 class Plato(models.Model):
@@ -19,3 +22,6 @@ class Plato(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_plato'
+        
+    def __str__(self):
+        return self.nombre
