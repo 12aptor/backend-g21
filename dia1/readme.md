@@ -4,3 +4,4 @@
 4 - django-admin startproject tienda
 5 - cd tienda
 6 - python manage.py runserver
+7 - python manage.py startapp app
