@@ -21,6 +21,13 @@ const Sidebar = () =>{
                     </Link>
                 </li>
 
+                <li>
+                    <Link to="/plato" className="waves-effect">
+                        <i className='bx bx-home-smile'></i>
+                        <span>Platos</span>
+                    </Link>
+                </li>
+
             </ul>
         </div >
         </>
