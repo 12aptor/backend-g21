@@ -1,0 +1,15 @@
+#frameworks
+flask
+
+#extensiones
+flask-sqlalchemy
+flask-marshmallow
+Flask-migrate
+flask-cors
+flask-restful
+flask-jwt-extended
+
+#librerias
+mysqlclient
+marshmallow-sqlalchemy
+python-dotenv
