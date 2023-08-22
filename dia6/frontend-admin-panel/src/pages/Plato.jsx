@@ -35,24 +35,29 @@ const Plato = () => {
     
     const createUpdateData = (e) =>{
         e.preventDefault();
+        console.log(newData)
         if(dataId > 0){
-            CategoriaService.updateOne(dataId,newData).then(
+            PlatoService.updateOne(dataId,newData).then(
                 (res)=>{
                     setRefreshData(true);
                     setNewData({
                         nombre:"",
+                        precio:0,
+                        imagen:""
                     })
                     setDataId(0)
                 }
             )
         }
         else{
-            CategoriaService.setNew(newData).then(
+            PlatoService.setNew(newData).then(
                 (res)=>{
                     console.log(res)
                     setRefreshData(true)
                     setNewData({
                         nombre:"",
+                        precio:0,
+                        imagen:""
                     })
                     setDataId(0)
                 }
@@ -61,7 +66,7 @@ const Plato = () => {
     }
 
     const editData = (cod) =>{
-        CategoriaService.getOne(cod).then(
+        PlatoService.getOne(cod).then(
             (res)=>{
                 setNewData({
                     nombre:res.nombre,
@@ -72,7 +77,7 @@ const Plato = () => {
     }
 
     const deleteData = (cod) =>{
-        CategoriaService.deleteOne(cod).then(
+        PlatoService.deleteOne(cod).then(
             (res)=>{
                 setRefreshData(true);
                 setNewData({
@@ -96,7 +101,7 @@ const Plato = () => {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-12">
-                                <h4>CATEGORIAS</h4>
+                                <h4>PLATOS</h4>
                             </div>
                         </div>
                         <div className="row">
@@ -105,13 +110,35 @@ const Plato = () => {
                                     <div className="card-body">
                                         <form onSubmit={createUpdateData}>
                                             <div className="form-group">
-                                                <label htmlFor="simpleinput">Descripción</label>
+                                                <label htmlFor="simpleinput">Nombre</label>
                                                 <input type="text" 
                                                 id="simpleinput" 
                                                 className="form-control"
                                                 name="nombre" 
                                                 placeholder=""
                                                 value={newData.nombre}
+                                                onChange={handleInputChange}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label htmlFor="simpleinput">Precio</label>
+                                                <input type="text" 
+                                                id="simpleinput" 
+                                                className="form-control"
+                                                name="precio" 
+                                                placeholder=""
+                                                value={newData.precio}
+                                                onChange={handleInputChange}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label htmlFor="simpleinput">Imagen</label>
+                                                <input type="text" 
+                                                id="simpleinput" 
+                                                className="form-control"
+                                                name="imagen" 
+                                                placeholder=""
+                                                value={newData.imagen}
                                                 onChange={handleInputChange}
                                                 />
                                             </div>
