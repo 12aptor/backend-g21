@@ -5,3 +5,4 @@
 5 - cd tienda
 6 - python manage.py runserver
 7 - python manage.py startapp app
+8 - python manage.py inspectdb

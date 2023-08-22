@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'tienda.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "db_shop_g21",
+        "NAME": "db_shop_g21_django",
         "USER": "root",
         "PASSWORD": "",
         "HOST": "127.0.0.1",
