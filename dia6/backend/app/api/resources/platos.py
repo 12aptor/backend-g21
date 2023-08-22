@@ -56,10 +56,10 @@ class PlatoResource(Resource):
             obj_plato.precio = data['precio']
         if 'imagen' in data:
             obj_plato.imagen = data['imagen']
-        obj_plato.save()
         if 'categoria_id' in data:
             obj_plato.categoria_id = data['categoria_id']
-        
+            
+        obj_plato.save()
         data_schema = PlatoSchema()
         
         context = {

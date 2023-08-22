@@ -74,9 +74,9 @@ const Plato = () => {
                             console.log(res)
                             setRefreshData(true)
                             setNewData({
-                                nombre:"",
-                                precio:0,
-                                imagen:""
+                                nombre: "",
+                                precio: 0,
+                                imagen: ""
                             })
                             setDataId(0)
                         }
