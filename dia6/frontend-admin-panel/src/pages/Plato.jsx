@@ -12,6 +12,7 @@ const Plato = () => {
     })
     const [refreshData,setRefreshData] = useState(false)
     const [dataId,setDataId] = useState(0)
+    const [imageFile,setImageFile] = useState()
 
     const tab = <>&nbsp;&nbsp;</>;
 
@@ -30,6 +31,11 @@ const Plato = () => {
         return setNewData({
             ...newData,[name]:value
         })
+    }
+
+    const handleFileChange = (e) =>{
+        const file = e.target.files[0]
+        setImageFile(file)
     }
 
     
@@ -133,13 +139,12 @@ const Plato = () => {
                                             </div>
                                             <div className="form-group">
                                                 <label htmlFor="simpleinput">Imagen</label>
-                                                <input type="text" 
+                                                <input type="file" 
                                                 id="simpleinput" 
                                                 className="form-control"
-                                                name="imagen" 
+                                                name="file" 
                                                 placeholder=""
-                                                value={newData.imagen}
-                                                onChange={handleInputChange}
+                                                onChange={handleFileChange}
                                                 />
                                             </div>
                                             <button type="submit" className="btn btn-primary waves-effect waves-light">Guardar</button>
