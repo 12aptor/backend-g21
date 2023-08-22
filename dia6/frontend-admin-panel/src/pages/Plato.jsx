@@ -2,17 +2,20 @@ import { useState,useEffect } from "react"
 import Header from "../components/Header"
 import Sidebar from "../components/Sidebar"
 import PlatoService from "../services/Plato.services"
+import CategoriaService from "../services/Categoria.services"
 
 const Plato = () => {
     const [data,setData] = useState([])
     const [newData,setNewData] = useState({
         nombre:"",
         precio:0,
-        imagen:""
+        imagen:"",
+        categoria_id:null
     })
     const [refreshData,setRefreshData] = useState(false)
     const [dataId,setDataId] = useState(0)
     const [imageFile,setImageFile] = useState()
+    const [categoriaData,setCategoriaData] = useState([])
 
     const tab = <>&nbsp;&nbsp;</>;
 
@@ -22,6 +25,12 @@ const Plato = () => {
                 console.log(res)
                 setData(res);
                 setRefreshData(false)
+            }
+        )
+        CategoriaService.getAll().then(
+            (res)=>{
+                console.log("categorias:",res)
+                setCategoriaData(res)
             }
         )
     },[refreshData])
@@ -49,7 +58,8 @@ const Plato = () => {
                     setNewData({
                         nombre:"",
                         precio:0,
-                        imagen:""
+                        imagen:"",
+                        categoria_id:null
                     })
                     setDataId(0)
                 }
@@ -66,7 +76,8 @@ const Plato = () => {
                     const dataPlato = {
                         nombre : newData.nombre,
                         imagen : res,
-                        precio : newData.precio
+                        precio : newData.precio,
+                        categoria_id : newData.categoria_id
                     }
                     console.log("nuevo plato : ",dataPlato)
                     PlatoService.setNew(dataPlato).then(
@@ -76,7 +87,8 @@ const Plato = () => {
                             setNewData({
                                 nombre: "",
                                 precio: 0,
-                                imagen: ""
+                                imagen: "",
+                                categoria_id:null
                             })
                             setDataId(0)
                         }
@@ -164,6 +176,23 @@ const Plato = () => {
                                                 onChange={handleFileChange}
                                                 />
                                             </div>
+                                            <div className="form-group">
+                                                <label htmlFor="simpleinput">Categoria</label>
+                                                <select 
+                                                id="simpleSelect"
+                                                className="form-control mb-3"
+                                                name="categoria_id"
+                                                onChange={handleInputChange}
+                                                >
+                                                    {categoriaData.map(objCategoria => {
+                                                        return (
+                                                            <option value={objCategoria.id}>{objCategoria.nombre}</option>
+                                                        )
+                                                        })
+                                                    }
+                                                    
+                                                </select>
+                                            </div>
                                             <button type="submit" className="btn btn-primary waves-effect waves-light">Guardar</button>
                                         </form>
                                     </div>
@@ -181,21 +210,21 @@ const Plato = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {data.map(dt => {
+                                            {data.map(objPlato => {
                                                 return (
-                                                    <tr key={dt.id}>
-                                                        <td>{dt.nombre}</td>
-                                                        <td>{dt.precio}</td>
-                                                        <td><img src={dt.imagen} className="avatar-md"/></td>
+                                                    <tr key={objPlato.id}>
+                                                        <td>{objPlato.nombre}</td>
+                                                        <td>{objPlato.precio}</td>
+                                                        <td><img src={objPlato.imagen} className="avatar-md"/></td>
                                                         <td>
                                                             <button className="btn btn-success"
-                                                            onClick={()=>editData(dt.id)}
+                                                            onClick={()=>editData(objPlato.id)}
                                                             >
                                                                 Editar
                                                             </button>
                                                             {tab}
                                                             <button className="btn btn-danger"
-                                                            onClick={()=>deleteData(dt.id)}
+                                                            onClick={()=>deleteData(objPlato.id)}
                                                             >
                                                                 Eliminar
                                                             </button>
