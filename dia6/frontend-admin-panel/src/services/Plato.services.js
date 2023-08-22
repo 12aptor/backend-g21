@@ -42,6 +42,13 @@ class PlatoService{
         })
     }
 
+    uploadOne(file){
+        return axios.post(API_URL+"/plato/upload",file)
+        .then(res=>{
+            return res.data.content
+        })
+    }
+
 }
 
 export default new PlatoService();

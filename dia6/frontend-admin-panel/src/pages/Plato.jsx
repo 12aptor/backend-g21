@@ -41,7 +41,7 @@ const Plato = () => {
     
     const createUpdateData = (e) =>{
         e.preventDefault();
-        console.log(newData)
+        
         if(dataId > 0){
             PlatoService.updateOne(dataId,newData).then(
                 (res)=>{
@@ -56,18 +56,35 @@ const Plato = () => {
             )
         }
         else{
-            PlatoService.setNew(newData).then(
+            //subir la imagen
+            let formData = new FormData()
+            formData.append("file",imageFile)
+            PlatoService.uploadOne(formData).then(
                 (res)=>{
-                    console.log(res)
-                    setRefreshData(true)
-                    setNewData({
-                        nombre:"",
-                        precio:0,
-                        imagen:""
-                    })
-                    setDataId(0)
+                    console.log("nueva imagen :",res)
+                    //grabar el nuevo Plato
+                    const dataPlato = {
+                        nombre : newData.nombre,
+                        imagen : res,
+                        precio : newData.precio
+                    }
+                    console.log("nuevo plato : ",dataPlato)
+                    PlatoService.setNew(dataPlato).then(
+                        (res)=>{
+                            console.log(res)
+                            setRefreshData(true)
+                            setNewData({
+                                nombre:"",
+                                precio:0,
+                                imagen:""
+                            })
+                            setDataId(0)
+                        }
+                    )
                 }
             )
+            
+           
         }
     }
 
