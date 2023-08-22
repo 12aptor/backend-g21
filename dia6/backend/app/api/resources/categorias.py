@@ -13,7 +13,7 @@ api_categorias = Api(api)
 
 class CategoriaResource(Resource):
     
-    @jwt_required()
+    #@jwt_required()
     def get(self):
         data = Categoria.get_all()
         data_schema = CategoriaSchema(many=True)
@@ -25,7 +25,7 @@ class CategoriaResource(Resource):
         
         return context
     
-    @jwt_required()
+    #@jwt_required()
     def post(self):
         data = request.get_json()
         

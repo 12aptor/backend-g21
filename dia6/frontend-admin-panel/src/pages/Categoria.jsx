@@ -6,7 +6,7 @@ import CategoriaService from "../services/Categoria.services"
 const Categoria = () => {
     const [data,setData] = useState([])
     const [newData,setNewData] = useState({
-        descripcion:""
+        nombre:""
     })
     const [refreshData,setRefreshData] = useState(false)
     const [dataId,setDataId] = useState(0)
@@ -16,6 +16,7 @@ const Categoria = () => {
     useEffect(()=>{
         CategoriaService.getAll().then(
             (res)=>{
+                console.log(res)
                 setData(res);
                 setRefreshData(false)
             }
@@ -37,7 +38,7 @@ const Categoria = () => {
                 (res)=>{
                     setRefreshData(true);
                     setNewData({
-                        descripcion:"",
+                        nombre:"",
                     })
                     setDataId(0)
                 }
@@ -49,7 +50,7 @@ const Categoria = () => {
                     console.log(res)
                     setRefreshData(true)
                     setNewData({
-                        descripcion:"",
+                        nombre:"",
                     })
                     setDataId(0)
                 }
@@ -61,7 +62,7 @@ const Categoria = () => {
         CategoriaService.getOne(cod).then(
             (res)=>{
                 setNewData({
-                    descripcion:res.descripcion,
+                    nombre:res.nombre,
                 })
                 setDataId(cod)
             }
@@ -73,7 +74,7 @@ const Categoria = () => {
             (res)=>{
                 setRefreshData(true);
                 setNewData({
-                    descripcion:"",
+                    nombre:"",
                 })
                 setDataId(0)
             }
@@ -106,9 +107,9 @@ const Categoria = () => {
                                                 <input type="text" 
                                                 id="simpleinput" 
                                                 className="form-control"
-                                                name="descripcion" 
+                                                name="nombre" 
                                                 placeholder=""
-                                                value={newData.descripcion}
+                                                value={newData.nombre}
                                                 onChange={handleInputChange}
                                                 />
                                             </div>
@@ -122,7 +123,7 @@ const Categoria = () => {
                                     <table className="table mb-0">
                                         <thead>
                                             <tr>
-                                                <th>Descripcion</th>
+                                                <th>nombre</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
@@ -130,7 +131,7 @@ const Categoria = () => {
                                             {data.map(dt => {
                                                 return (
                                                     <tr key={dt.id}>
-                                                        <td>{dt.descripcion}</td>
+                                                        <td>{dt.nombre}</td>
                                                         <td>
                                                             <button className="btn btn-success"
                                                             onClick={()=>editData(dt.id)}
