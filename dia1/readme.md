@@ -1,0 +1,6 @@
+1 - python -m venv venv
+2 - source venv/Scripts/activate
+3 - pip install django
+4 - django-admin startproject tienda
+5 - cd tienda
+6 - python manage.py runserver
