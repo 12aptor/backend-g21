@@ -25,8 +25,13 @@ def saludo(request):
     nombre = request.GET['nom']
     return HttpResponse('<h1>Hola ' + nombre + '</h1>')
 
+def suma(request,n1,n2):
+    resultado = n1 + n2
+    return HttpResponse('<h1>El resultado es ' + str(resultado) + '</h1>')
+
 urlpatterns = [
     path('',index),
     path('saludo',saludo),
+    path('suma/<int:n1>/<int:n2>',suma),
     path('admin/', admin.site.urls),
 ]
