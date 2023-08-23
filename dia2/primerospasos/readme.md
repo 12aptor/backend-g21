@@ -18,3 +18,6 @@ paso 2 : desplegar proyecto(para ejecutar este comando debes estar dentro de la 
 
 - python manage.py migrate
 
+# para crear usuarios
+ - python manage.py createsuperuser
+
