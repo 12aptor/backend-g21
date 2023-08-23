@@ -11,3 +11,7 @@ paso 2 : desplegar proyecto(para ejecutar este comando debes estar dentro de la 
 #para crear un app
 
 - python manage.py startapp web
+
+#para migraciones
+
+- python manage.py migrate
