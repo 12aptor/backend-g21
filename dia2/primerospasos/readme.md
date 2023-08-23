@@ -7,3 +7,7 @@ paso 1 : crear un nuevo proyecto
 paso 2 : desplegar proyecto(para ejecutar este comando debes estar dentro de la carpeta proyecto)
 
 - python manage.py runserver
+
+#para crear un app
+
+- python manage.py startapp web
