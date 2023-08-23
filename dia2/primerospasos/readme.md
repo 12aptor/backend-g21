@@ -14,4 +14,7 @@ paso 2 : desplegar proyecto(para ejecutar este comando debes estar dentro de la 
 
 #para migraciones
 
+- python manage.py makemigrations
+
 - python manage.py migrate
+
