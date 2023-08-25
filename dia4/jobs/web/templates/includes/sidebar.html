@@ -7,23 +7,19 @@
                 <input type="text" name="search" class="form-control selectpicker search-fields" placeholder="Search Keywords">
             </div>
             <div class="form-group">
-                <label>Location</label>
+                <label>Ubicación</label>
                 <select class="selectpicker search-fields" name="Location">
-                    <option>All Location</option>
-                    <option>New York City</option>
-                    <option>Australia</option>
-                    <option>Brazil</option>
-                    <option>Canada</option>
+                    {% for ubicacion in ubicaciones %}
+                        <option>{{ubicacion.nombre}}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="form-group">
-                <label>Categories</label>
+                <label>Categoria</label>
                 <select class="selectpicker search-fields" name="categories">
-                    <option>All Categories</option>
-                    <option>Accounting / Finance</option>
-                    <option>Industrial Engineer</option>
-                    <option>hospital / Health Care</option>
-                    <option>Design & Creative</option>
+                    {% for categoria in categorias %}
+                        <option>{{categoria.nombre}}</option>
+                    {% endfor %}
                 </select>
             </div>
             <br>

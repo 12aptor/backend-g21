@@ -28,20 +28,21 @@
             </div>
         </div>
         <!-- job box start -->
+        {% for oferta in ofertas %}
         <div class="job-box">
             <div class="company-logo">
                 <img src="http://placehold.it/90x90" alt="logo">
             </div>
             <div class="description">
                 <div class="float-left">
-                    <h5 class="title"><a href="job-details.html">Restaurant General Manager</a></h5>
+                    <h5 class="title"><a href="job-details.html">{{oferta.puesto}}</a></h5>
                     <div class="candidate-listing-footer">
                         <ul>
                             <li><i class="flaticon-work"></i> Hotel</li>
-                            <li><i class="flaticon-pin"></i> New York City</li>
-                            <li><i class="flaticon-time"></i> Full Time</li>
+                            <li><i class="flaticon-pin"></i> {{oferta.ubicacion}}</li>
+                            <li><i class="flaticon-time"></i> {{oferta.modalidad}}</li>
                         </ul>
-                        <h6>Deadline: Jan 31, 2019</h6>
+                        <h6>{{oferta.fecha_cierre}}</h6>
                     </div>
                 </div>
                 <div class="div-right">
@@ -50,6 +51,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
         <!-- Page navigation start -->
         <div class="pagination-box hidden-mb-45 text-center">
             <nav aria-label="Page navigation example">
