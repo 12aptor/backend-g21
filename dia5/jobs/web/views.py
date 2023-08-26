@@ -21,10 +21,16 @@ def index(request):
     return render(request,'index.html',context)
 
 
-def ofertas_por_categoria(request,categoria_id):
+def filtros(request):
     titulo = 'PORTAL DE OFERTAS LABORALES'
-    objCategoria = Categoria.objects.get(pk=categoria_id)
-    lista_ofertas = Oferta.objects.filter(categoria=objCategoria)
+    
+    if request.method == "POST":
+        categoria_id = int(request.POST['categoria_id'])
+        objCategoria = Categoria.objects.get(pk=categoria_id)
+        lista_ofertas = Oferta.objects.filter(categoria=objCategoria)
+    else:
+        lista_ofertas = Oferta.objects.all()
+    
     lista_categorias = Categoria.objects.all()
     lista_ubicaciones = Ubicacion.objects.all()
     
