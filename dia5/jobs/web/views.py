@@ -24,6 +24,7 @@ def index(request):
 def filtros(request):
     titulo = 'PORTAL DE OFERTAS LABORALES'
     
+    lista_ofertas = Oferta.objects.all()
     if request.method == "POST":
         categoria_id = int(request.POST['categoria_id'])
         ubicacion_id = int(request.POST['ubicacion_id'])
@@ -33,8 +34,7 @@ def filtros(request):
         elif ubicacion_id > 0:
             objUbicacion = Ubicacion.objects.get(pk=ubicacion_id)
             lista_ofertas = objUbicacion.oferta_set.all()
-    else:
-        lista_ofertas = Oferta.objects.all()
+        
     
     lista_categorias = Categoria.objects.all()
     lista_ubicaciones = Ubicacion.objects.all()
