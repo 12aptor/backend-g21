@@ -28,12 +28,16 @@ def filtros(request):
     if request.method == "POST":
         categoria_id = int(request.POST['categoria_id'])
         ubicacion_id = int(request.POST['ubicacion_id'])
+        busqueda = request.POST['search']
+        
         if categoria_id > 0 :
             objCategoria = Categoria.objects.get(pk=categoria_id)
             lista_ofertas = Oferta.objects.filter(categoria=objCategoria)
         elif ubicacion_id > 0:
             objUbicacion = Ubicacion.objects.get(pk=ubicacion_id)
             lista_ofertas = objUbicacion.oferta_set.all()
+        elif busqueda != '':
+            lista_ofertas = Oferta.objects.filter(puesto__contains=busqueda)
         
     
     lista_categorias = Categoria.objects.all()
