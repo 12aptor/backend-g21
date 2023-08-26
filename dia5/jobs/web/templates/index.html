@@ -35,7 +35,7 @@
             </div>
             <div class="description">
                 <div class="float-left">
-                    <h5 class="title"><a href="job-details.html">{{oferta.puesto}}</a></h5>
+                    <h5 class="title"><a href="{% url 'web:oferta' oferta.id %}">{{oferta.puesto}}</a></h5>
                     <div class="candidate-listing-footer">
                         <ul>
                             <li><i class="flaticon-work"></i> Hotel</li>
