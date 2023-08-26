@@ -10,9 +10,10 @@
             <div class="form-group">
                 <label>Ubicación</label>
                 
-                <select class="selectpicker search-fields" onclick="this.form.submit()">
+                <select class="selectpicker search-fields" name="ubicacion_id" onchange="this.form.submit()">
+                    <option value="0">--SELECCIONE--</option>
                     {% for ubicacion in ubicaciones %}
-                        <option>{{ubicacion.nombre}}</option>
+                        <option value="{{ubicacion.id}}">{{ubicacion.nombre}}</option>
                     {% endfor %}
                 </select>
             </div>
