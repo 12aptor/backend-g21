@@ -50,3 +50,9 @@ def filtros(request):
         'ofertas':lista_ofertas
     }
     return render(request,'index.html',context)
+
+"""
+VISTAS PARA DETALLE DE OFERTAS
+"""
+def oferta_detalle(request):
+    return render(request,'oferta.html')
