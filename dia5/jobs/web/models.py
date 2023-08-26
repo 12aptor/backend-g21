@@ -34,6 +34,8 @@ class Oferta(models.Model):
     responsabilidades = models.TextField(null=True)
     fecha_registro = models.DateField(auto_now=True)
     fecha_cierre = models.DateField(null=True)
+    empresa = models.CharField(null=True,max_length=200)
+    imagen = models.ImageField(upload_to='ofertas',blank=True)
     
     def __str__(self):
         return self.puesto

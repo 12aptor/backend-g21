@@ -31,7 +31,11 @@
         {% for oferta in ofertas %}
         <div class="job-box">
             <div class="company-logo">
-                <img src="http://placehold.it/90x90" alt="logo">
+                {% if oferta.imagen %}
+                    <img src="{{oferta.imagen.url}}" alt="logo">
+                {% else %}
+                    <img src="http://placehold.it/90x90" alt="logo">
+                {% endif %}
             </div>
             <div class="description">
                 <div class="float-left">
