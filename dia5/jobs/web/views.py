@@ -54,5 +54,11 @@ def filtros(request):
 """
 VISTAS PARA DETALLE DE OFERTAS
 """
-def oferta_detalle(request):
-    return render(request,'oferta.html')
+def oferta_detalle(request,oferta_id):
+    
+    obj_oferta = Oferta.objects.get(pk=oferta_id)
+    context = {
+        'oferta':obj_oferta
+    }
+    
+    return render(request,'oferta.html',context)

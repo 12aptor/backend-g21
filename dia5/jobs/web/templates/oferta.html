@@ -8,12 +8,12 @@
                 <img src="http://placehold.it/80x80" alt="avatar">
             </div>
             <div class="description">
-                <h5 class="title"><a href="#">Development Marketer</a></h5>
+                <h5 class="title"><a href="#">{{oferta.puesto}}</a></h5>
                 <div class="candidate-listing-footer">
                     <ul>
-                        <li><i class="flaticon-work"></i>UX Designer</li>
-                        <li><i class="flaticon-pin"></i> New York City</li>
-                        <li><i class="flaticon-time"></i> Full Time</li>
+                        <li><i class="flaticon-work"></i>Empresa</li>
+                        <li><i class="flaticon-pin"></i> {{oferta.ubicacion}}</li>
+                        <li><i class="flaticon-time"></i> {{oferta.categoria}}</li>
                     </ul>
                 </div>
             </div>
@@ -21,44 +21,18 @@
         <hr class="hr-boder">
         <!-- job description start -->
         <div class="job-description mb-40">
-            <h3 class="heading-2">Job Description</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.</p>
+            <h3 class="heading-2">Descripción del puesto</h3>
+            <p>{{oferta.descripcion}}</p>
         </div>
         <!-- Education + experience start-->
         <div class="education-experience amenities mb-40">
-            <h3 class="heading-2">Education + Experience</h3>
-            <ul>
-                <li>
-                    <i class="fa fa-check"></i>M.B.S / M.B.A under National University with CA course complete.
-                </li>
-                <li><i class="fa fa-check"></i>3 or more years of professional design experience</li>
-                <li>
-                    <i class="fa fa-check"></i>Excellent communication skills, most notably a demonstrated ability to solicit and address creative and design feedback
-                </li>
-                <li>
-                    <i class="fa fa-check"></i>Masters of library science any Green University.
-                </li>
-                <li><i class="fa fa-check"></i>BA/BS degree in a technical field or equivalent practical experience.</li>
-                <li>
-                    <i class="fa fa-check"></i>Ability to work independently and to carry out assignments to completion within parameters of instructions given, prescribed routines, and standard accepted practices
-                </li>
-            </ul>
+            <h3 class="heading-2">Experiencia</h3>
+            {{oferta.experiencia}}
         </div>
         <!-- Responsibilities start-->
         <div class="responsibilities amenities mb-40">
-            <h3 class="heading-2">Responsibilities</h3>
-            <ul>
-                <li>
-                    <i class="fa fa-check"></i>Explore and design dynamic and compelling consumer experiences.
-                </li>
-                <li><i class="fa fa-check"></i>Have sound knowledge of commercial activities.</li>
-                <li>
-                    <i class="fa fa-check"></i>Build next-generation web applications with a focus on the client side.
-                </li>
-                <li>
-                    <i class="fa fa-check"></i>The applicants should have experience in the following areas
-                </li>
-            </ul>
+            <h3 class="heading-2">Responsabilidades</h3>
+            {{oferta.Responsabilidades}}
         </div>
     </div>
     <div class="col-lg-4 col-md-12">
