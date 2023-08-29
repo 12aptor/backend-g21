@@ -7,3 +7,15 @@ def index(request):
     }
     
     return JsonResponse(context)
+
+from .models import Pelicula
+
+def peliculas(request):
+    lista_peliculas = Pelicula.objects.all()
+    
+    context = {
+        'status':True,
+        'content':list(lista_peliculas.values())
+    }
+    
+    return JsonResponse(context)
