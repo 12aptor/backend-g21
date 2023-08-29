@@ -31,3 +31,21 @@ def peliculas(request):
     }
     
     return Response(context)
+
+@api_view(['GET','PUT','DELETE'])
+def pelicula_detail(request,pelicula_id):
+    obj_pelicula = Pelicula.objects.get(pk=pelicula_id)
+    
+    if request.method == 'GET':
+        serializer = PeliculaSerializer(obj_pelicula)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = PeliculaSerializer(obj_pelicula,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
+    elif request.method == 'DELETE':
+        obj_pelicula.delete()
+        return Response(status=204)

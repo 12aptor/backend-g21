@@ -2,9 +2,8 @@ from rest_framework import serializers
 
 from .models import Pelicula
 
-class PeliculaSerializer(serializers.Serializer):
-    titulo = serializers.CharField()
-    descripcion = serializers.CharField()
+class PeliculaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pelicula
+        fields = '__all__'
     
-    def create(self, validated_data):
-        return Pelicula.objects.create(**validated_data)
