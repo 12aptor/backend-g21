@@ -12,13 +12,22 @@ def index(request):
     return Response(context)
 
 from .models import Pelicula
+from .serializers import PeliculaSerializer
 
+@api_view(['GET','POST'])
 def peliculas(request):
-    lista_peliculas = Pelicula.objects.all()
+    
+    if request.method == 'POST':
+        serializer = PeliculaSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+    elif request.method == 'GET':
+        lista_peliculas = Pelicula.objects.all()
+        serializer = PeliculaSerializer(lista_peliculas,many=True)
     
     context = {
         'status':True,
-        'content':list(lista_peliculas.values())
+        'content':serializer.data
     }
     
-    return JsonResponse(context)
+    return Response(context)
