@@ -1,12 +1,15 @@
 from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
+@api_view(['GET'])
 def index(request):
     context = {
         'status':True,
         'content':'mi primer api rest con django'
     }
     
-    return JsonResponse(context)
+    return Response(context)
 
 from .models import Pelicula
 
