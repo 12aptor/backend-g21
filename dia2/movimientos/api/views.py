@@ -28,3 +28,18 @@ class MovimientoView(APIView):
         serializer.save()
         
         return Response(serializer.data)
+    
+from django.http import Http404
+
+class MovimientoDetailView(APIView):
+    
+    def get_object(self,pk):
+        try:
+            return Movimiento.objects.get(pk=pk)
+        except:
+            raise Http404
+        
+    def get(self,resquest,pk):
+        data = self.get_object(pk)
+        serializer = MovimientoSerializer(data)
+        return Response(serializer.data)
