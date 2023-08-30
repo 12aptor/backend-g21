@@ -12,8 +12,12 @@ class MovimientoView(APIView):
         return Response(serializer.data)
     
     def post(self,request):
-        ultimo_movimiento = Movimiento.objects.all().order_by('pk').reverse()[:1]
-        saldo = ultimo_movimiento[0].saldo
+        try:
+            ultimo_movimiento = Movimiento.objects.all().order_by('pk').reverse()[:1]
+            saldo = ultimo_movimiento[0].saldo
+        except:
+            saldo = 0
+            
         data = request.data
         if data['tipo'] == '2':
             data['saldo'] = str(float(saldo) - float(data['monto']))
