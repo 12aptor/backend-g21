@@ -14,3 +14,5 @@ class MovimientoSerializer(serializers.ModelSerializer):
             tipo = "EGRESO"
         representation['tipo'] = tipo
         return representation
+    
+    
