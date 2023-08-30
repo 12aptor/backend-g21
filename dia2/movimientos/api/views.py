@@ -39,7 +39,23 @@ class MovimientoDetailView(APIView):
         except:
             raise Http404
         
-    def get(self,resquest,pk):
+    def get(self,request,pk):
         data = self.get_object(pk)
         serializer = MovimientoSerializer(data)
         return Response(serializer.data)
+    
+    def put(self,request,pk):
+        data = self.get_object(pk)
+        serializer = MovimientoSerializer(data,data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        
+        return Response(serializer.errors)
+    
+    def delete(self,request,pk):
+        data = self.get_object(pk)
+        data.delete()
+        
+        return Response(status=201)
