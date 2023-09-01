@@ -5,6 +5,8 @@ from . import views
 
 router = DefaultRouter()
 router.register(r'experiencia',views.ExperienciaViewSet,basename='experiencia')
+router.register(r'jornada',views.JornadaViewSet,basename='jornada')
+router.register(r'modalidad',views.ModalidadViewSet,basename='modalidad')
 
 urlpatterns = [
     path('',include(router.urls)),

@@ -3,7 +3,9 @@ from rest_framework import serializers
 from .models import (
     TblCategoria,
     TblEmpresa,
-    TblExperiencia
+    TblExperiencia,
+    TblJornada,
+    TblModalidad
 )
 
 class CategoriaSerializer(serializers.ModelSerializer):
@@ -19,4 +21,14 @@ class EmpresaSerializer(serializers.ModelSerializer):
 class ExperienciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = TblExperiencia
+        fields = '__all__'
+        
+class JornadaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TblJornada
+        fields = '__all__'
+        
+class ModalidadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TblModalidad
         fields = '__all__'

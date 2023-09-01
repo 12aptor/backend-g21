@@ -4,13 +4,17 @@ from rest_framework import viewsets
 from .models import (
     TblCategoria,
     TblEmpresa,
-    TblExperiencia
+    TblExperiencia,
+    TblJornada,
+    TblModalidad
 )
 
 from .serializers import (
     CategoriaSerializer,
     EmpresaSerializer,
-    ExperienciaSerializer
+    ExperienciaSerializer,
+    JornadaSerializer,
+    ModalidadSerializer
 )
 
 class CategoriaView(generics.ListCreateAPIView):
@@ -35,3 +39,11 @@ class EmpresaDetailView(generics.RetrieveUpdateDestroyAPIView):
 class ExperienciaViewSet(viewsets.ModelViewSet):
     queryset = TblExperiencia.objects.all()
     serializer_class = ExperienciaSerializer
+    
+class JornadaViewSet(viewsets.ModelViewSet):
+    queryset = TblJornada.objects.all()
+    serializer_class = JornadaSerializer
+    
+class ModalidadViewSet(viewsets.ModelViewSet):
+    queryset = TblModalidad.objects.all()
+    serializer_class = ModalidadSerializer
