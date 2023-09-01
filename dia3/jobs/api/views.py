@@ -1,5 +1,6 @@
 from rest_framework import generics
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 from .models import (
     TblCategoria,
@@ -32,18 +33,22 @@ class EmpresaView(generics.ListCreateAPIView):
     serializer_class = EmpresaSerializer
     
 class EmpresaDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = TblEmpresa.objects.all()
     lookup_url_kwarg = 'empresa_id'
     serializer_class = EmpresaSerializer
     
 class ExperienciaViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = TblExperiencia.objects.all()
     serializer_class = ExperienciaSerializer
     
 class JornadaViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = TblJornada.objects.all()
     serializer_class = JornadaSerializer
     
 class ModalidadViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = TblModalidad.objects.all()
     serializer_class = ModalidadSerializer
