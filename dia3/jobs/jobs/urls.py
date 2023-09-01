@@ -15,12 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.http import HttpResponse
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView
 )
 
+def index(request):
+    return HttpResponse('<center>mi api rest</center>')
+
 urlpatterns = [
+    path('',index),
     path('api/',include('api.urls')),
     path('admin/', admin.site.urls),
     path('api/login', TokenObtainPairView.as_view(), name='token_obtain_pair')
