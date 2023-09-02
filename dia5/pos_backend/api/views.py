@@ -1,5 +1,7 @@
 from rest_framework import generics
 
+from rest_framework.permissions import IsAuthenticated
+
 from .models import (
     Mesa,Categoria,
     Plato,
@@ -11,7 +13,8 @@ from .serializers import (
     CategoriaSerializer,
     PlatoSerializer,
     CategoriaPlatoSerializer,
-    PedidoSerializerPOST
+    PedidoSerializerPOST,
+    PedidoSerializerGET
 )
 
 class MesaView(generics.ListAPIView):
@@ -34,3 +37,8 @@ class CategoriaPlatosView(generics.RetrieveAPIView):
 class PedidoRegisterView(generics.CreateAPIView):
     queryset = Pedido.objects.all()
     serializer_class = PedidoSerializerPOST
+    
+class PedidoDashboardView(generics.ListAPIView):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializerGET
+    permission_classes = [IsAuthenticated]
