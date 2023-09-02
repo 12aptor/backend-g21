@@ -74,6 +74,9 @@ class PedidoPlato(models.Model):
     plato_id = models.ForeignKey(Plato,related_name='pedidosplatos',
                                  to_field='plato_id',db_column='plato_id'
                                  ,on_delete=models.RESTRICT)
+    pedido_id = models.ForeignKey(Pedido,related_name='pedidoplatos',
+                                  to_field='pedido_id',db_column='pedido_id',
+                                  on_delete=models.RESTRICT,null=True)
     
     class Meta:
         db_table = 'tbl_pedido_plato'

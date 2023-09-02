@@ -2,14 +2,16 @@ from rest_framework import generics
 
 from .models import (
     Mesa,Categoria,
-    Plato
+    Plato,
+    Pedido
 )
 
 from .serializers import (
     MesaSerializer,
     CategoriaSerializer,
     PlatoSerializer,
-    CategoriaPlatoSerializer
+    CategoriaPlatoSerializer,
+    PedidoSerializerPOST
 )
 
 class MesaView(generics.ListAPIView):
@@ -28,3 +30,7 @@ class CategoriaPlatosView(generics.RetrieveAPIView):
     queryset = Categoria.objects.all()
     lookup_url_kwarg = 'categoria_id'
     serializer_class = CategoriaPlatoSerializer
+    
+class PedidoRegisterView(generics.CreateAPIView):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializerPOST
