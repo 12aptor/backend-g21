@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import cloudinary
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,14 +87,15 @@ WSGI_APPLICATION = 'pos_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_pos_backend',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': config('MYSQL_ADDON_DB', default='db_pos_backend'),
+        'USER': config('MYSQL_ADDON_USER', default='root'),
+        'PASSWORD': config('MYSQL_ADDON_PASSWORD', default=''),
+        'HOST': config('MYSQL_ADDON_HOST', default='127.0.0.1'),
+        'PORT': config('MYSQL_ADDON_PORT', default='3306'),
     }
 }
 
