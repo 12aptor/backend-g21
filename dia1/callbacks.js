@@ -5,6 +5,20 @@ function hola(nombre,primercallback){
     },1000)
 }
 
-hola('César',function(nombre){
+function hablar(nombre,segundocallback){
+    setTimeout(function(){
+        console.log("como estas  " + nombre)
+        segundocallback(nombre)
+    },1000)
+}
+
+function adios(nombre){
     console.log('adios ' + nombre)
+}
+
+//callbacks hell
+hola('César',function(nombre){
+    hablar(nombre,function(nombre){
+        adios(nombre)
+    })
 })
