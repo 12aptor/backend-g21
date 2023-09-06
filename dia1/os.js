@@ -18,7 +18,7 @@ la memoria ram en kb,mb y gb
 function calcularMemoria(capacidad,tipo){
     return new Promise((res,rej)=>{
         let memoria_convertida = capacidad / 1024
-        console.log('MEMORIA EN ' + tipo + ' : ' + memoria_convertida)
+        console.log('MEMORIA EN ' + tipo + ' : ' + memoria_convertida.toFixed(2))
         res(memoria_convertida)
         rej("error...")
     })
