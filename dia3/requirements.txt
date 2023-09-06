@@ -1,5 +1,0 @@
-django==3.2
-djangorestframework
-mysqlclient
-djangorestframework-simplejwt
-django-cors-headers
