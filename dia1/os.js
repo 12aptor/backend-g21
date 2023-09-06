@@ -15,3 +15,15 @@ la memoria ram en kb,mb y gb
 1024 kb = 1 mb
 1024 mb = 1 gb
 */
+function calcularMemoria(capacidad,tipo){
+    return new Promise((res,rej)=>{
+        let memoria_convertida = capacidad / 1024
+        console.log('MEMORIA EN ' + tipo + ' : ' + memoria_convertida)
+        res(memoria_convertida)
+        rej("error...")
+    })
+}
+
+calcularMemoria(memoria,'KB')
+    .then((kb)=>calcularMemoria(kb,'MB'))
+    .then((mb)=>calcularMemoria(mb,'GB'))
