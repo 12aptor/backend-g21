@@ -4,3 +4,5 @@
 4 - scripts
     "start": "node index.js",
     "dev": "nodemon index.js",
+
+5  npm install mysql2
