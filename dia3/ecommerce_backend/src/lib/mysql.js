@@ -33,10 +33,12 @@ class MysqlLib{
     }
 }
 
-db = new MysqlLib()
+module.exports = MysqlLib;
+
+/*db = new MysqlLib()
 db.getConnection()
 db.querySql("select * from tbl_category")
 .then((result)=>{
     console.log(result)
-})
+})*/
 

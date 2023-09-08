@@ -1,6 +1,8 @@
 const express = require('express')
 const {config} = require('./config')
 
+const categoryApi = require('./routes/category.routes')
+
 const app = express()
 
 
@@ -15,5 +17,7 @@ app.get('/',(req,res)=>{
         })
     }
 })
+
+categoryApi(app)
 
 app.listen(config.port,()=>console.log('http://localhost:'+config.port))
