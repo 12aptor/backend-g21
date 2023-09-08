@@ -1,9 +1,12 @@
 const express = require('express')
 const {config} = require('./config')
+const cors = require('cors')
 
 const categoryApi = require('./routes/category.routes')
 
 const app = express()
+
+app.use(cors())
 app.use(express.json())
 
 

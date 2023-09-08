@@ -3,7 +3,7 @@ const CategoryService = require('../services/category.service')
 
 function categoryApi(app){
     const router = express.Router()
-    app.use('/category',router)
+    app.use('/categories',router)
 
     const objCategory = new CategoryService()
 
