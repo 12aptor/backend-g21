@@ -22,6 +22,13 @@ class CategoryService{
         const result = await this.db.querySql(sqlLast)
         return result
     }
+
+    async getById(id){
+        const sqlGetById = `select id,name from tbl_category
+                            where id = ${id}`
+        const result = await this.db.querySql(sqlGetById)
+        return result
+    }
 }
 
 module.exports = CategoryService
