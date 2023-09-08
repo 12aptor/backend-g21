@@ -25,7 +25,6 @@ export const Categories = () => {
       const token = getToken();
       const response = await getAllCategories(token);
       if (response.status === 200) {
-        console.log(response.data)
         setListOfCategories(response.data);
       }
     };
@@ -50,7 +49,7 @@ export const Categories = () => {
     }
   };
 
-  const deleteCategory = async (category_id) => {
+  const deleteCategoryById = async (category_id) => {
     try {
       const token = getToken();
       const response = await deleteCategory(category_id, token);
@@ -88,7 +87,7 @@ export const Categories = () => {
                   <td>{index + 1}</td>
                   <td>{category.name}</td>
                   <td>
-                    <FaTrashAlt onClick={() => deleteCategory(category.id)} />
+                    <FaTrashAlt onClick={() => deleteCategoryById(category.id)} />
                   </td>
                 </tr>
               ))}

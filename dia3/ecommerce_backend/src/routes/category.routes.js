@@ -74,7 +74,7 @@ function categoryApi(app){
         try{
             const result = await objCategory.delete(id)
             if(result){
-                res.status(201).json({
+                res.status(200).json({
                     'message':'registro eliminado'
                 })
             }else{
