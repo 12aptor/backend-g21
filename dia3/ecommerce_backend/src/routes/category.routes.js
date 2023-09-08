@@ -17,6 +17,20 @@ function categoryApi(app){
             })
         }
     })
+
+
+    router.post('/',async function(req,res){
+        const {body : data} = req
+        try{
+            const newData = await objCategory.create({data})
+            res.status(201).json(newData[0])
+        }
+        catch(err){
+            res.status(500).json({
+                'error':err
+                })
+        }
+    })
 }
 
 module.exports = categoryApi

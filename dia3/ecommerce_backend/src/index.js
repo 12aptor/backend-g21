@@ -4,6 +4,7 @@ const {config} = require('./config')
 const categoryApi = require('./routes/category.routes')
 
 const app = express()
+app.use(express.json())
 
 
 app.get('/',(req,res)=>{
