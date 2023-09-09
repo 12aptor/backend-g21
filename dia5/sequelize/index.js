@@ -30,4 +30,32 @@ app.post('/tarea',(req,res)=>{
     })
 })
 
+app.get('/tarea/:id',(req,res)=>{
+    Tarea.findByPk(req.params.id)
+    .then(function(data){
+        res.json(data)
+    })
+})
+
+app.put('/tarea/:id',(req,res)=>{
+    Tarea.findByPk(req.params.id)
+    .then(function(data){
+        data.update({
+            descripcion: req.body.descripcion,
+            estado:req.body.estado
+        }).then(function(dataUpdated){
+            res.json(dataUpdated)
+        })
+    })
+})
+
+app.delete('/tarea/:id',(req,res)=>{
+    Tarea.findByPk(req.params.id)
+    .then((tareaDel)=>{
+        tareaDel.destroy()
+    }).then((data)=>{
+        res.sendStatus(201)
+    })
+})
+
 app.listen(5000,()=>console.log('servidor activo en http://localhost:5000'))
