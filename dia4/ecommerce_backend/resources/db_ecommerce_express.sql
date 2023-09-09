@@ -48,3 +48,10 @@ LOCK TABLES `tbl_product` WRITE;
 INSERT INTO `tbl_product` VALUES (1,'polo python','polo python dev',100,'https://ingoodcompany.asia/images/products_attr_img/matrix/default.png',10,1),(2,'polo react','polo react js dev',100,'https://ingoodcompany.asia/images/products_attr_img/matrix/default.png',0,1),(4,'polo angular dev','polo angular js dev',100,'https://ingoodcompany.asia/images/products_attr_img/matrix/default.png',0,1),(5,'polo angular dev','polo angular js dev',100,'https://ingoodcompany.asia/images/products_attr_img/matrix/default.png',0,1),(6,'polo angular dev','polo angular js dev',100,'https://ingoodcompany.asia/images/products_attr_img/matrix/default.png',0,1),(7,'manzana','manzana',1,'https://ingoodcompany.asia/images/products_attr_img/matrix/default.png',0,1),(8,'pera','pera',1,'http://127.0.0.1:5000/static/uploads/orange.webp',0,1),(9,'POLERA PYTHON 2023','POLERA PARA PROGRAMADOR PYTHON 2023',100,'http://localhost:5000/static/uploads/polerapython.webp',0,2);
 /*!40000 ALTER TABLE `tbl_product` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+CREATE TABLE tbl_user(  
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
+    username VARCHAR(255),
+    password VARCHAR(255)
+) COMMENT '';
