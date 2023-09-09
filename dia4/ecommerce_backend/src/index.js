@@ -28,7 +28,7 @@ app.use('/categories',(req,res,next)=>{
 
 app.get('/',(req,res)=>{
     try{
-        console.log(a + 3)
+        //console.log(a + 3)
         res.json({
             'message':'servidor activo'
         })
