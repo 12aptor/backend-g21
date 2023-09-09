@@ -1,11 +1,12 @@
 const express = require('express')
 const {config} = require('./config')
 const cors = require('cors')
+const boom = require('@hapi/boom')
 
 const categoryApi = require('./routes/category.routes')
 
 //middlewares
-const {errorHandler} = require('./middlewares/error.handler')
+const {errorHandler,boomErrorHandler,} = require('./middlewares/error.handler')
 
 const app = express()
 
@@ -26,13 +27,12 @@ app.use('/categories',(req,res,next)=>{
 
 app.get('/',(req,res)=>{
     try{
+        console.log(a + 3)
         res.json({
             'message':'servidor activo'
         })
     }catch(err){
-        res.status(500).json({
-            'error':err
-        })
+        res.status(500).json(boom.badData('error : ' + err.message))
     }
 })
 
@@ -45,6 +45,7 @@ app.get('/error',(req,res)=>{
 
 categoryApi(app)
 
+app.use(boomErrorHandler)
 app.use(errorHandler)
 
 app.listen(config.port,()=>console.log('http://localhost:'+config.port))
