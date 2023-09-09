@@ -1,5 +1,9 @@
 const express = require('express')
 const CategoryService = require('../services/category.service')
+const boom = require('@hapi/boom')
+
+const validatorHandler = require('../middlewares/validator.handler')
+const {categorySchema} = require('../schemas/category.schema')
 
 function categoryApi(app){
     const router = express.Router()
@@ -19,16 +23,16 @@ function categoryApi(app){
     })
 
 
-    router.post('/',async function(req,res){
+    router.post('/',
+    validatorHandler(categorySchema,'body'),
+    async function(req,res){
         const {body : data} = req
         try{
             const newData = await objCategory.create({data})
             res.status(201).json(newData[0])
         }
         catch(err){
-            res.status(500).json({
-                'error':err
-                })
+            res.status(500).json(boom.badData)
         }
     })
 

@@ -45,7 +45,7 @@ app.get('/error',(req,res)=>{
 
 categoryApi(app)
 
-app.use(boomErrorHandler)
-app.use(errorHandler)
+/app.use(boomErrorHandler)
+/app.use(errorHandler)
 
 app.listen(config.port,()=>console.log('http://localhost:'+config.port))
