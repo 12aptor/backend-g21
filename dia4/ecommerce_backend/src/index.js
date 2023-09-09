@@ -4,6 +4,9 @@ const cors = require('cors')
 
 const categoryApi = require('./routes/category.routes')
 
+//middlewares
+const {errorHandler} = require('./middlewares/error.handler')
+
 const app = express()
 
 app.use(cors())
@@ -33,6 +36,15 @@ app.get('/',(req,res)=>{
     }
 })
 
+app.get('/error',(req,res)=>{
+    console.log(a + 3)
+    res.status(200).json({
+        'message':'error'
+    })
+})
+
 categoryApi(app)
+
+app.use(errorHandler)
 
 app.listen(config.port,()=>console.log('http://localhost:'+config.port))
