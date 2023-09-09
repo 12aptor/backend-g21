@@ -19,4 +19,15 @@ app.get('/tarea',(req,res)=>{
     })
 })
 
+app.post('/tarea',(req,res)=>{
+    Tarea.create(
+        {
+            descripcion: req.body.descripcion,
+            estado : req.body.estado
+        }
+    ).then((data)=>{
+        res.json(data)
+    })
+})
+
 app.listen(5000,()=>console.log('servidor activo en http://localhost:5000'))
