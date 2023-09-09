@@ -1,5 +1,7 @@
 const express = require('express')
 const UserService = require('../services/user.service')
+const jwt = require('jsonwebtoken')
+const {config} = require('../config')
 
 const boom = require('@hapi/boom')
 
@@ -17,6 +19,30 @@ function userApi(app){
         }
         catch(err){
             res.status(500).json(boom.badData(err))
+        }
+    })
+
+    router.post('/login',async function(req,res){
+        const {body:data} = req
+
+        const authUser = await objUser.authenticate({data})
+        console.log(authUser)
+        if(authUser.id > 0){
+            const token = jwt.sign(
+                authUser,
+                config.jwt_secret,
+                {
+                    expiresIn:'1m'
+                }
+            )
+
+            res.status(200).json({
+                'token':token
+            })
+        }else{
+            res.status(401).json({
+                message:'datos invalidos'
+            })
         }
     })
 }

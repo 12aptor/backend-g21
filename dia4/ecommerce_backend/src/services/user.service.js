@@ -24,6 +24,35 @@ class UserService{
         const result = await this.getLast()
         return result
     }
+
+    async authenticate({data}){
+        try{
+            const sqlAuth = `select id,username,password
+                             from tbl_user where username = '${data.username}'`
+            console.log(sqlAuth)
+            const result = await this.db.querySql(sqlAuth)
+            console.log(result)
+            if(await bcrypt.compare(data.password,result[0].password)){
+                const userFound = {
+                    id:result[0].id,
+                    username:data.username
+                }
+                return userFound
+            }else{
+                const userNotFound = {
+                    id:0,
+                    username:null
+                }
+                return userNotFound
+            }
+        }catch(err){
+            const userNotFound = {
+                id:0,
+                username:null
+            }
+            return  userNotFound
+        }
+    }
 }
 
 module.exports = UserService
