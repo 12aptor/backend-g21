@@ -37,9 +37,9 @@ const ProductSchema = {
         allowNull:true,
         type:DataTypes.INTEGER
     },
-    category_id:{
+    categoryId:{
         field:'category_id',
-        allowNull:true,
+        allowNull:false,
         type:DataTypes.INTEGER,
         references:{
             model:CATEGORY_TABLE,
@@ -52,7 +52,8 @@ const ProductSchema = {
 
 class Product extends Model{
     static associate(models){
-        this.belongsTo(models.Category,{as :'category'})
+        this.belongsTo(models.Category,
+            {as :'category'})
     }
 
     static config(sequelize){
