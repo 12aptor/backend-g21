@@ -27,6 +27,16 @@ function productApi(app){
             res.status(500).json(boom.badData(err))
         }
     })
+
+    router.get('/:id',async (req,res)=>{
+        try{
+            const {id} = req.params
+            const data = await objProduct.findOne(id)
+            res.status(200).json(data)
+        }catch(err){
+            res.status(500).json(boom.badData(err))
+        }
+    })
 }
 
 module.exports = productApi

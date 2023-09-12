@@ -15,6 +15,11 @@ class ProductService{
         const result = await models.Product.create(data)
         return result
     }
+
+    async findOne(id){
+        const result = await models.Product.findByPk(id)
+        return result
+    }
 }
 
 module.exports = ProductService
