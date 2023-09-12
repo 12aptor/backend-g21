@@ -7,6 +7,7 @@ function setupModels(sequelize){
     Product.init(ProductSchema,Product.config(sequelize))
     
     Product.associate(sequelize.models)
+    Category.associate(sequelize.models)
 }
 
 module.exports = setupModels

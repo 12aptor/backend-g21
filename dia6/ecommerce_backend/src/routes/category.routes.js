@@ -18,7 +18,7 @@ function categoryApi(app){
             res.status(200).json(data)
         }catch(err){
             res.status(500).json({
-                'error':err
+                'error':err.message
             })
         }
     })
@@ -42,13 +42,7 @@ function categoryApi(app){
         const {id} = req.params
         try{
             const data = await objCategory.getById(id)
-            if (data.length > 0){
-                res.status(200).json(data[0])
-            }else{
-                res.status(204).json({
-                    'message':'no hay registros'
-                })
-            }
+            res.status(200).json(data)
         }catch(err){
             res.status(500).json({
                 'error':err
