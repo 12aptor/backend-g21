@@ -20,6 +20,12 @@ class ProductService{
         const result = await models.Product.findByPk(id)
         return result
     }
+
+    async update(id,data){
+        const productUpdate = await this.findOne(id)
+        const result = await productUpdate.update(data)
+        return result
+    }
 }
 
 module.exports = ProductService
