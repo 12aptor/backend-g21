@@ -56,3 +56,5 @@ class Product extends Model{
         }
     }
 }
+
+module.exports = {TABLE_NAME,ProductSchema,Product}
