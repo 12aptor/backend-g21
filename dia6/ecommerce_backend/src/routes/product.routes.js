@@ -49,6 +49,18 @@ function productApi(app){
         }
     })
 
+    router.delete('/:id',async (req,res)=>{
+        try{
+            const {id} = req.params
+            const data = await objProduct.delete(id)
+            if(data){
+                res.sendStatus(201)
+            }
+        }catch(err){
+            res.status(500).json(boom.badData(err))
+        }
+    })
+
 }
 
 module.exports = productApi
