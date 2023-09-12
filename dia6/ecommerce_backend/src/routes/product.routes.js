@@ -17,6 +17,16 @@ function productApi(app){
             res.status(500).json(boom.badData(err))
         }
     })
+
+    router.post('/',async function(req,res){
+        try{
+            const body = req.body
+            const data = await objProduct.create(body)
+            res.status(201).json(data)
+        }catch(err){
+            res.status(500).json(boom.badData(err))
+        }
+    })
 }
 
 module.exports = productApi
