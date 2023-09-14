@@ -1,7 +1,7 @@
 const {Router} = require('express')
 const router = Router()
 
-const {create,getAll, getOne} = require('../controllers/category.controller')
+const {create,getAll, getOne,updateOne,deleteOne} = require('../controllers/category.controller')
 
 router.route('/')
 .post(create)
@@ -9,5 +9,7 @@ router.route('/')
 
 router.route('/:id')
 .get(getOne)
+.put(updateOne)
+.delete(deleteOne)
 
 module.exports = router

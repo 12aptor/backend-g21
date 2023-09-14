@@ -24,4 +24,15 @@ categoryController.getOne = async (req,res)=>{
     res.json(category)
 }
 
+categoryController.updateOne = async (req,res)=>{
+    await CategoryModel.findByIdAndUpdate(req.params.id,req.body)
+    const category = await CategoryModel.findById(req.params.id)
+    res.json(category)
+}
+
+categoryController.deleteOne = async (req,res)=>{
+    await CategoryModel.findByIdAndDelete(req.params.id)
+    res.sendStatus(202)
+}
+
 module.exports = categoryController
