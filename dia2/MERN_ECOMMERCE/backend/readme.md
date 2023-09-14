@@ -12,4 +12,4 @@ paso 3 : crear scripts
 en el archivo package.json agregar estos scripts en la sección correspendiente
 
 "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+"dev": "nodemon src/index.js",
