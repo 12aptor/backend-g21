@@ -19,4 +19,20 @@ productController.getAll = async (req,res)=>{
     res.status(200).json(products)
 }
 
+productController.getOne = async (req,res)=>{
+    const product = await productModel.findById(req.params.id)
+    res.json(product)
+}
+
+productController.updateOne = async (req,res)=>{
+    await productModel.findByIdAndUpdate(req.params.id,req.body)
+    const product = await productModel.findById(req.params.id)
+    res.json(product)
+}
+
+productController.deleteOne = async (req,res)=>{
+    await productModel.findByIdAndDelete(req.params.id)
+    res.sendStatus(202)
+}
+
 module.exports = productController
