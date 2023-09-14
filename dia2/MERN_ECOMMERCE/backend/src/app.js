@@ -16,4 +16,6 @@ app.get('/',(req,res)=>{
     })
 })
 
+app.use('/categories',require('./routes/category.route'))
+
 module.exports = app
