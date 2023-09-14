@@ -14,4 +14,9 @@ categoryController.create = async (req,res)=>{
     }
 }
 
+categoryController.getAll = async (req,res)=>{
+    const categories = await CategoryModel.find()
+    res.status(200).json(categories)
+}
+
 module.exports = categoryController
