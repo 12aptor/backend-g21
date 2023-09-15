@@ -1,90 +1,11 @@
+import ContactInfo from "../molecules/ContactInfo"
 
 const MainHeader = () =>{
     return(
         <>
         <div className="container-fluid page-styling site-header-before">
           <div className="row">
-            <div className="col-lg-4">
-              <ul className="links_list links_list-align-left align-center-desktop topbar-social">
-                <li>
-                  <p className="links_list-value">
-                    <a href="http://facebook.com">
-                      <i className="fa fa-facebook"></i>
-                    </a>
-                  </p>
-                </li>
-                <li>
-                  <p className="links_list-value">
-                    <a href="mailto:email@email.com">
-                      <i className="fa fa-paper-plane"></i>
-                    </a>
-                  </p>
-                </li>
-                <li>
-                  <p className="links_list-value">
-                    <a href="http://pinterest.com">
-                      <i className="fa fa-pinterest-p"></i>
-                    </a>
-                  </p>
-                </li>
-                <li>
-                  <p className="links_list-value">
-                    <a href="http://youtube.com">
-                      <i className="fa fa-youtube-play"></i>
-                    </a>
-                  </p>
-                </li>
-                <li>
-                  <p className="links_list-value">
-                    <a href="http://twitter.com">
-                      <i className="fa fa-twitter"></i>
-                    </a>
-                  </p>
-                </li>
-                <li>
-                  <p className="links_list-value">
-                    <a href="http://google.com" >
-                      <i className="fa fa-google-plus"></i>
-                    </a>
-                  </p>
-                </li>
-                <li>
-                  <p className="links_list-value">
-                    <a href="http://instagram.com">
-                      <i className="fa fa-instagram"></i>
-                    </a>
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <div className="col-lg-8">
-              <ul className="links_list links_list-align-right align-center-desktop topbar-contacts">
-                <li>
-                  <p className="links_list-label">
-                    Our Address
-                  </p>
-                  <p className="links_list-value">
-                    <a href="http://maps.google.com">15th Street, Miami, USA</a>
-                  </p>
-                </li>
-                <li>
-                  <p className="links_list-label">
-                    Contact Us
-                  </p>
-                  <p className="links_list-value">
-                    <a href="mailto:support@email.com">Support@Email.com</a>
-                  </p>
-                </li>
-                <li>
-                  <p className="links_list-label">
-                    Phone
-                  </p>
-                  <p className="links_list-value">
-                    <a href="tel:4785929899">(478)-592-9899</a>
-                  </p>
-                </li>
-              </ul>
-            </div>
+            <ContactInfo/>
           </div>
         </div>
         <div className="site-header">
