@@ -20,4 +20,16 @@ userController.create = async (req,res) =>{
     }
 }
 
+userController.getAll = async (req,res) =>{
+    try{
+        const users = await userModel.find({},'email isAdmin')
+        res.status(200).json(users)
+    }catch(err){
+        res.status(502).json({
+            message:err.message
+        })
+    }
+}
+
+
 module.exports = userController
