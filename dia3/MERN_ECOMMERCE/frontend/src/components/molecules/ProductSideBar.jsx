@@ -1,4 +1,22 @@
+import {useEffect,useState} from 'react'
+import { getAllCategoriesService } from "../../services/CategoriesServices"
+
+
 const ProductSiderBar = ()=>{
+    const [listOfCategories,setListOfCategories] = useState([])
+
+    useEffect(()=>{
+      console.log("...llamando categorias")
+      const fetchData = async()=>{
+        const response = await getAllCategoriesService()
+        if(response.status === 200){
+          console.log("data retorno :",response.data)
+          setListOfCategories(response.data)
+        }
+      }
+      fetchData()
+    },[])
+
     return(
         <aside className="blog-sb-widgets section-sb" id="section-sb">
                     <div className="theiaStickySidebar">
@@ -11,9 +29,13 @@ const ProductSiderBar = ()=>{
                             <h3 className="widgettitle">Categories</h3>
                             <div className="section-sb-current">
                               <ul className="section-sb-list">
-                                <li>
-                                  <a href="#"><span className="section-sb-label">Electricity <span className="count">6</span></span></a>
-                                </li>
+                                {listOfCategories.length > 0 &&
+                                  listOfCategories.map((category,index)=>(
+                                  <li key={index}>
+                                      <a href="#"><span className="section-sb-label">{category.name} <span className="count">6</span></span></a>
+                                    </li>
+                                  ))
+                                }
                               </ul>
                             </div>
                           </div>
