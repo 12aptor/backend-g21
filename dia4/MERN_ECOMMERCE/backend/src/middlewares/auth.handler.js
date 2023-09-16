@@ -6,11 +6,9 @@ function verifyToken(req,res,next){
     
     if(typeof bearerToken !== 'undefined'){
         const bearer = bearerToken.split(' ')
-        const token = bearer[1]
-        console.log('token : ',token)
+        const token = bearer[1]       
         try{
             const decoded = jwt.verify(token,config.jwt_secret)
-            console.log(decoded)
         }catch(err){
             return res.status(401).json({
                 message : err.message
