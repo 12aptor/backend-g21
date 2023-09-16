@@ -2,10 +2,11 @@ const {Router} = require('express')
 const router = Router()
 
 const {create,getAll,getOne,updateOne,deleteOne, auth} = require('../controllers/user.controller')
+const {verifyToken} = require('../middlewares/auth.handler')
 
 router.route('/')
     .post(create)
-    .get(getAll)
+    .get(verifyToken,getAll)
 
 router.route('/:id')
     .get(getOne)
