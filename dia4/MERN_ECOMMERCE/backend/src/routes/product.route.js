@@ -1,7 +1,7 @@
 const {Router} = require('express')
 const router = Router()
 
-const {create,getAll,getOne,updateOne,deleteOne} = require('../controllers/product.controller')
+const {create,getAll,getOne,updateOne,deleteOne,uploadProductImage} = require('../controllers/product.controller')
 
 router.route('/')
     .post(create)
@@ -11,5 +11,8 @@ router.route('/:id')
     .get(getOne)
     .put(updateOne)
     .delete(deleteOne)
+
+router.route('/upload')
+    .post(uploadProductImage)
 
 module.exports = router

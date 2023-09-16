@@ -1,6 +1,7 @@
 const productController = {}
 
 const productModel = require('../models/products.model')
+const {uploadImage} = require('../libs/cloudinary.lib')
 
 productController.create = async (req,res)=>{
     try{
@@ -34,5 +35,28 @@ productController.deleteOne = async (req,res)=>{
     await productModel.findByIdAndDelete(req.params.id)
     res.sendStatus(202)
 }
+
+productController.uploadProductImage = async(req,res)=>{
+    fileProductImage = req.files.productImage
+    let uploadPath = '../backend/src/media' + fileProductImage.name
+
+    await fileProductImage.mv(uploadPath,function(err){
+        if(err){
+            res.status(502).json({
+                message:'error : ' + err.message
+            })
+        }
+        else{
+            uploadImage(uploadPath)
+            .then((image_url)=>{
+                res.status(201).json({
+                    image_url:image_url
+                })
+            })
+        }
+    })
+}
+
+
 
 module.exports = productController

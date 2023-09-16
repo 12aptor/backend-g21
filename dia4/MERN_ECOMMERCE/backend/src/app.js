@@ -2,9 +2,12 @@ const express = require('express')
 const {config} = require('./config')
 const cors = require('cors')
 
+const fileUpload = require('express-fileupload')
+
 const app = express()
 
 app.use(cors())
+app.use(fileUpload())
 app.use(express.json())
 
 app.set('port',config.port)
