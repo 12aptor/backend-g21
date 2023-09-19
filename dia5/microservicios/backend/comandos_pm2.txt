@@ -15,3 +15,6 @@ pm2 delete index_servicio
 
 6 - crear archivo de configuración
 pm2 init simple
+
+7 - desplegar ecosystem
+pm2 start ecosystem.config.js
