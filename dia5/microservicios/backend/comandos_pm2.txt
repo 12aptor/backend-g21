@@ -12,3 +12,6 @@ pm2 start ruta_servicio --name "ms-catalogo"
 
 5 - eliminar un servicio
 pm2 delete index_servicio
+
+6 - crear archivo de configuración
+pm2 init simple
