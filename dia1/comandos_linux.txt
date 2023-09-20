@@ -32,9 +32,11 @@ chmod 444 - asinga permisos de solo lectura a un archivo o carpeta
 dentro del directorio codigo/prueba
 touch prueba.txt
 cat prueba.txt
+sudo apt install vim
 sudo vim prueba.txt
 para insertar presionas tecla i
 para guardar presionas esc +  :wq
+para salir sin guardar presionas esc + :q!
 
 ### instalar servidor web
 sudo apt install nginx
