@@ -1,6 +1,7 @@
 sudo -- permite ejecutar comandos como administrador
 sudo apt update - actualizar el sistema
 sudo apt install net-tools --instala libreria net tools
+sudo apt install iputils-ping
 sudo init 0 -- apaga el servidor
 ifconfig -- para saber la ip del servidor
 ping ip_servidor (ejem : ping 192.168.0.2) para comprobar conexión
