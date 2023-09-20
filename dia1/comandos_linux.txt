@@ -43,9 +43,16 @@ sudo apt install nginx
 sudo systemctl status nginx
 cd /var/www/html
 cat nombrearchivo -- puedo ver el contenido
+
+descarmos win scp
+https://sourceforge.net/projects/winscp/files/WinSCP/6.1.2/WinSCP-6.1.2-Setup.exe/download
+
 entramos por winscp y creamos un archivo prueba.html en /home/codigo
 luego en el gitbash ejecutamos este comando
 sudo cp prueba.html /var/www/html
+
+sudo cp -r personal/. /var/www/html/
+
 
 ### Instalar nvm en ubuntu
 sudo apt install curl
