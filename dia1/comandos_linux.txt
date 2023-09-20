@@ -40,6 +40,7 @@ para salir sin guardar presionas esc + :q!
 
 ### instalar servidor web
 sudo apt install nginx
+sudo systemctl status nginx
 cd /var/www/html
 cat nombrearchivo -- puedo ver el contenido
 entramos por winscp y creamos un archivo prueba.html en /home/codigo
