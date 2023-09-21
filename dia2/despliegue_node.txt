@@ -1,0 +1,26 @@
+### Instalar nvm en ubuntu
+sudo apt install curl
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+source ~/.bashrc
+nvm install v16.16.0
+
+#### clonar repositorio
+1 - crear carpeta repositories
+sudo mkdir repositories
+cd repositories
+
+2 - clona repositorio
+git clone https://github.com/cesarmayta/digitalocean_mern_api.git
+cd digitalocean_mern_api
+
+
+3 - crear archivo .env
+sudo vim .env
+copiar el siguiente codigo
+presionar i
+MONGOURI=url_mongo_atlas
+
+4 - desplegaer
+npm install
+npm install -g pm2
+pm2 start src/index.js
