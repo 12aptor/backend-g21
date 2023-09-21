@@ -24,3 +24,20 @@ MONGOURI=url_mongo_atlas
 npm install
 npm install -g pm2
 pm2 start src/index.js
+
+
+-------- desplegar frontend
+
+en la carpeta repositories clonar proyecto frontend
+git clone https://github.com/cesarmayta/digitalocean_mern_front.git
+ cd digitalocean_mern_front/
+
+en el archivo envirments.js colocar la ip del servidor publico
+export const API_URL = 'http://tu_ip_publica:5000'
+
+npm install
+npm run build
+
+sudo apt install nginx
+sudo cp -r dist/. /var/www/html/
+
