@@ -1,0 +1,32 @@
+############ COMANDOS BASICOS DE DOCKER
+
+NOTA : si estas ejecutando con ubuntu recuerda colocar al inicio la palabra "sudo"
+
+1 - para ver la versión de docker
+
+docker version
+
+2 - para ver las imagenes
+
+docker images
+
+3 - para ver los contenedores
+
+docker ps
+
+4 - para descargar una imagen
+
+docker pull nginx
+
+5 - para inicializar un contenedor
+
+docker run  -d -p 8090:80 nginx:1.17-alpine
+
+6 - para detener un contenedor
+
+docker stop id_contenedor
+
+7 - para iniciar un contenedor
+
+docker start id_contenedor
+
