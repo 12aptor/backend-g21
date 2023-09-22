@@ -1,0 +1,4 @@
+#para crear la imagen
+docker build -t ubuntu-python:1.0 .
+#para crear el contenedor
+docker run -d --name mi-python-web -p 8082:4000 ubuntu-python:1.0
