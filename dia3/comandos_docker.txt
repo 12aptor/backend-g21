@@ -30,3 +30,12 @@ docker stop id_contenedor
 
 docker start id_contenedor
 
+
+###################### VOLUMENES
+en windows
+docker run -d -p 80:80 -v c:/html:/usr/share/nginx/html --name servidorweb nginx:1.17-alpine
+
+en linux
+sudo docker run -d -p 8090:80 -v /home/codigo/html:/usr/share/nginx/html --name servidorweb nginx:1.17-alpine
+
+
