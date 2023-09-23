@@ -1,8 +1,17 @@
 version : '3'
 
 services:
+  db:
+    image : mongo
+    restart: always
+    ports:
+      - "27018:27017"
   api:
     build: .
     image: img-node-api:1.0
     ports:
       - "5000:5000"
+    environment:
+      MONGOURI : mongodb://db/db_ecommerce
+    depends_on:
+      - db
